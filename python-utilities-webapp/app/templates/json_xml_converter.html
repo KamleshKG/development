@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>JSON/XML Converter</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <textarea class="form-control" name="content" rows="15">{{ result.json or result.xml if result else '' }}</textarea>
+        </div>
+
+        <div class="btn-group" role="group">
+            <button type="submit" name="direction" value="json-to-xml" class="btn btn-primary">
+                JSON → XML
+            </button>
+            <button type="submit" name="direction" value="xml-to-json" class="btn btn-secondary">
+                XML → JSON
+            </button>
+        </div>
+    </form>
+
+    {% if result and not result.success %}
+    <div class="mt-3 alert alert-danger">
+        {{ result.error }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

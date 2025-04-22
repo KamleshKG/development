@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>YAML Utility</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <textarea class="form-control" name="content" rows="15">{{ content if content else '' }}</textarea>
+        </div>
+
+        <button type="submit" name="action" value="validate" class="btn btn-primary">
+            Validate
+        </button>
+        <button type="submit" name="action" value="format" class="btn btn-secondary">
+            Format
+        </button>
+    </form>
+
+    {% if result %}
+    <div class="mt-3 alert alert-{{ 'success' if result.valid or result.success else 'danger' }}">
+        {{ result.message or result.error }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
