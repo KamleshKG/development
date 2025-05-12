@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Structure Visualizer</title>
+    <!-- Modern vis-network from CDN with local fallback -->
+    <script>
+        function loadVisualization() {
+            const loadFromCDN = () => {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/vis/9.1.2/vis-network.min.js';
+                script.integrity = 'sha512-0sMzqFF1B0Q5KA9Lk+KNj6h+6u5Y/qIcfywCYR+iuYapTKX9S0VF2YAE6rQw6W2x53j6RvB2Qf3bAlGqGJvCw==';
+                script.crossOrigin = 'anonymous';
+
+                script.onload = () => {
+                    console.log('vis.js loaded from CDN');
+                    initializeApp();
+                };
+
+                script.onerror = () => {
+                    console.warn('CDN failed, trying local version');
+                    loadLocal();
+                };
+
+                document.head.appendChild(script);
+            };
+
+            const loadLocal = () => {
+                const script = document.createElement('script');
+                script.src = '/static/js/vis-network.min.js';
+                script.onload = () => {
+                    console.log('vis.js loaded locally');
+                    initializeApp();
+                };
+                script.onerror = () => {
+                    console.error('Failed to load vis.js');
+                    showFatalError();
+                };
+                document.head.appendChild(script);
+            };
+
+            loadFromCDN();
+        }
+
+        function showFatalError() {
+            document.getElementById('network').innerHTML = `
+                <div class="alert alert-danger">
+                    <h4>Critical Error</h4>
+                    <p>Failed to load visualization engine. Please:</p>
+                    <ul>
+                        <li>Check your internet connection</li>
+                        <li>Refresh the page</li>
+                        <li>Contact support if problem persists</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Start loading process
+        document.addEventListener('DOMContentLoaded', loadVisualization);
+    </script>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/vis-network.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <h2>Code Visualizer</h2>
+                <div class="mb-3">
+                    <label class="form-label">Project Path:</label>
+                    <input id="folderPath" class="form-control"
+                           value="E:\PYTHON_PROJECTS\python_checklist">
+                    <button id="analyzeBtn" class="btn btn-primary mt-2">Analyze</button>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="network">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading visualization engine...</p>
+                    </div>
+                </div>
+                <div id="classDetails" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main app logic -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

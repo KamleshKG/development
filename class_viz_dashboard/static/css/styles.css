@@ -1,0 +1,110 @@
+/* ===== Base Styles ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* ===== Layout Structure ===== */
+.container-fluid {
+    height: 100vh;
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+    height: 100%;
+}
+
+/* ===== Sidebar Styles ===== */
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #dee2e6;
+}
+
+/* ===== Visualization Area ===== */
+#network {
+    width: 100%;
+    height: calc(100vh - 60px); /* Full height minus padding */
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* ===== Class Details Panel ===== */
+.class-details {
+    padding: 15px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    border: 1px solid #eee;
+}
+
+/* ===== Vis.js Tooltip Overrides ===== */
+.vis-tooltip {
+    font-family: Arial, sans-serif !important;
+    background: white !important;
+    color: #333 !important;
+    padding: 8px 12px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
+    max-width: 300px !important;
+    border: 1px solid #ddd !important;
+    font-size: 13px !important;
+}
+
+/* ===== Card Components ===== */
+.card {
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 12px 15px;
+}
+
+/* ===== Utility Classes ===== */
+.badge {
+    margin-right: 5px;
+    font-weight: normal;
+}
+
+.file-tree {
+    margin-top: 20px;
+    padding: 10px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+
+/* ===== Alert Messages ===== */
+.alert {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
