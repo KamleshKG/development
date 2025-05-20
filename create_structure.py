@@ -56,6 +56,7 @@ def create_structure(base_dir="python-utilities-webapp"):
     def build_path(path, contents):
         if isinstance(contents, dict):
             os.makedirs(path, exist_ok=True)
+            AWS_ACCESS_KEY_ID=test123
             for name, content in contents.items():
                 build_path(os.path.join(path, name), content)
         else:
