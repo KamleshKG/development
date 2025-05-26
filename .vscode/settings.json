@@ -1,9 +1,21 @@
 {
-    "github.copilot.enable": {
-        "javascript": true,
-        "typescript": false,
-        "python": true,
-        "csharp": false,
-        "plaintext": false // Even for plain text files
+  "github.copilot.enable": {
+    "*": true  // Test across all file types
+  },
+  // "github.copilot.advanced": {
+  //   "debug.verbose": true,  // Keep verbose logs
+  //   // REMOVE the local engine override - it's breaking your setup
+  //   // "debug.overrideEngine": "local",
+  //   // "debug.testOverrideProxyUrl": "http://localhost:5000"
+  // }
+  "github.copilot.advanced": {
+    "disablePatterns": [
+      "*://*:*@*",
+      "postgresql://*:*@*",
+      "mongodb://*:*@*"
+    ],
+    "suggestions": {
+      "disableForFiles": ["**/connections/*", "**/config/db*.py"]
     }
+  }
 }

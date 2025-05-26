@@ -1,0 +1,15 @@
+{
+  "github.copilot.inlineSuggest.enable": false,    // Turns off ALL inline completions
+  "github.copilot.editor.enableAutoCompletions": false,  // Disables auto-triggering
+  "github.copilot.enable": {                      // Whitelist languages
+    "*": false,                                   // Block all by default
+    "python": true,                               // Allow only for Python
+    "javascript": true                            // Allow only for JS
+  },
+    "[python]": {
+    "github.copilot.enable": true  // Completely disable for ALL .py files
+  },
+  "files.associations": {
+    "**/secrets.py": "plaintext"  // Trick Copilot into treating it as non-code
+  }
+}

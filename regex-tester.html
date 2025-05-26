@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Regex Tester</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        textarea, input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { background: #0078d4; color: white; border: none; padding: 10px 15px; cursor: pointer; }
+        .match { background-color: yellow; }
+        #results { margin-top: 20px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Regex Tester</h1>
+        
+        <label for="regexPattern">Regex Pattern:</label>
+        <input type="text" id="regexPattern" placeholder="e.g., \b[a-z]{3,5}\d{1,2}[a-z]{2}\b" value="\b[a-z]{3,5}\d{1,2}[a-z]{2}\b">
+        
+        <label for="testText">Test Text:</label>
+        <textarea id="testText" rows="5" placeholder="Paste text to test...">User ID: nbk75yu, PAN: aikpg85th, Invalid: abc123</textarea>
+        
+        <button onclick="testRegex()">Test Regex</button>
+        
+        <div id="results"></div>
+        <div id="highlightedText"></div>
+    </div>
+
+    <script>
+        function testRegex() {
+            const pattern = document.getElementById('regexPattern').value;
+            const text = document.getElementById('testText').value;
+            const resultsDiv = document.getElementById('results');
+            const highlightedDiv = document.getElementById('highlightedText');
+            
+            try {
+                // Test for matches
+                const regex = new RegExp(pattern, 'g');
+                const matches = text.match(regex);
+                
+                // Display results
+                resultsDiv.innerHTML = matches 
+                    ? `<strong>Matches (${matches.length}):</strong>\n${matches.join('\n')}` 
+                    : "<strong>No matches found.</strong>";
+                
+                // Highlight matches in text
+                highlightedDiv.innerHTML = text.replace(regex, match => 
+                    `<span class="match">${match}</span>`
+                );
+            } catch (e) {
+                resultsDiv.innerHTML = `<strong>Error:</strong> ${e.message}`;
+                highlightedDiv.innerHTML = '';
+            }
+        }
+        
+        // Run on page load with default example
+        window.onload = testRegex;
+    </script>
+</body>
+</html>

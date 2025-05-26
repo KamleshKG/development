@@ -1,0 +1,4 @@
+test_user_1 = "nbk75yu"
+test_user_2 = "nbety9u"
+test_pan = "aikpg85th"
+pancard = "aikpg85ed"
