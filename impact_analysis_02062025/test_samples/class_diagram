@@ -1,0 +1,4 @@
+// Class Diagram
+digraph {
+	rankdir=LR
+}
