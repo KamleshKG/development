@@ -595,3 +595,322 @@ configure the content
 experience the future of onboarding get
 2:51
 on board with strat on board
+
+=======================================================
+
+
+Demo: Model Context Protocol (MCP) + Ansible Lightspeed in Future Automation Workflows
+
+
+
+
+0:00
+today I want to show off some future
+0:02
+capabilities for Ansible automation
+0:03
+platform incorporating AI into
+0:05
+automation workflows There is this new
+0:08
+AI standard called MCP which stands for
+0:10
+model context protocol and it's an open
+0:12
+standard that allows large language AI
+0:14
+models to talk directly to end systems
+0:16
+In this future state we're using MCP to
+0:18
+allow anible light speeded intelligent
+0:20
+assistant to have the ability to
+0:22
+communicate directly with anything that
+0:24
+Ansible automation platform manages
+0:26
+I'm going to ask the assistant to build
+0:28
+a job template And with MCP it can
+0:31
+actually do it not just give us
+0:33
+instructions on how to do it As soon as
+0:35
+I click it's actually going to configure
+0:36
+all the parts of the job template You
+0:38
+can see it also has context It knows for
+0:40
+a job template it needs a credential it
+0:43
+needs a project and it needs an
+0:44
+inventory And it load the correct
+0:46
+playbook And you can see in just a few
+0:48
+quick seconds it's already finished the
+0:50
+job template Next I'm going to query
+0:53
+inible automation platform a question on
+0:54
+data and logs it contains which job
+0:56
+templates have the most failures in the
+0:58
+last 24 hours Lightseed intelligent
+1:00
+assistant can quickly query all job runs
+1:02
+over the last day and tell us which jobs
+1:04
+have the most failures And here it has
+1:07
+given me the top three As you can see by
+1:10
+this response it can actually help
+1:12
+troubleshoot as well Let's be polite and
+1:15
+ask it for help in finding which host
+1:16
+caused the issue Remember folks it costs
+1:19
+nothing to be polite
+1:21
+We're going to go ahead and let Lighteed
+1:23
+do its thing where it's querying through
+1:24
+all known logs And we can see that
+1:26
+there's an issue with rail 03 and rail
+1:29
+04 We're going to also use light speeded
+1:31
+assistant to retrieve some information
+1:33
+directly from these virtual machines
+1:35
+Lightseed assistant will again
+1:37
+automatically create and execute a job
+1:39
+template for us In this case it is using
+1:41
+an automatically AI generated playbook
+1:44
+to retrieve information from the rail
+1:46
+servers themselves based on our query
+1:49
+It looks like the playbook's done and
+1:52
+the information is these two hosts are
+1:54
+out of storage That would make sense why
+1:55
+they're behaving strangely These hosts
+1:57
+are running on Open Shift virtualization
+1:59
+Again I can use assistant by pressing
+2:01
+yes to help us fix it This time it's
+2:05
+dynamically creating automation content
+2:06
+to fix the issue which in my opinion
+2:09
+greatly lowers the barrier to
+2:10
+troubleshoot it infrastructure And look
+2:12
+at that it has already increased their
+2:14
+storage
+2:16
+We have content for automating Open
+2:18
+Shift virtualization So it's super easy
+2:20
+for Lightseed Assistant to use this
+2:22
+content quickly to automate day2
+2:23
+operational activities like increasing
+2:25
+memory or in this case storage Some
+2:28
+customers will have at least one
+2:29
+reservation We releasing AI generated
+2:32
+changes directly into production One of
+2:34
+the questions we get is if there are any
+2:36
+sort of guardrails or safety mechanisms
+2:38
+we can put on content whether it's AI
+2:40
+generated or not With the latest release
+2:42
+of Ansible automation platform it
+2:44
+includes Ansible policy enforcement This
+2:46
+feature gives us the option to use any
+2:48
+policies we have in place with OPA to
+2:50
+restrict automation jobs from
+2:51
+interfering with production systems For
+2:54
+example we had a problem where certain
+2:56
+team members were spinning up expensive
+2:58
+GPUs on AWS So I've added a policy that
+3:01
+will restrict that
+3:04
+And that's just a glimpse of what's
+3:06
+possible when we combine AI with Ansible
+3:08
+automation platform From intelligent
+3:10
+assistant to safe policydriven execution
+3:13
+this future of automation is fast
+3:15
+powerful and responsible Thank you for
+3:17
+watching and stay tuned as we continue
+3:18
+to unlock new ways to simplify it with
+3:20
+Anible and AI
+
+====================================================
+AIOps = artificial intelligence for IT operations
+=======================================================
+
+0:00
+I want to show you a modern way to have
+0:01
+your it organization react the next time
+0:03
+you get that 2 a.m. call that everything
+0:05
+is failing aka the is hit the fan
+0:09
+this story starts like most IT issues
+0:11
+with something being read in this case
+0:13
+your servers are down and nobody is
+0:15
+really sure why so problem One servers
+0:18
+are down and problem two how do we fix
+0:22
+this people are tired skills could be
+0:24
+limited or you have a skeleton staff on
+0:26
+hand because it's a holiday now before
+0:29
+anyone gets too worried let's just let
+0:31
+the system automatically fix itself I'm
+0:33
+just going to go ahead and click here so
+0:36
+anible can fix the problem let's give it
+0:39
+a
+0:41
+minute and cool green lights again now
+0:46
+how did that happen and more importantly
+0:48
+how do you get that in your environments
+0:50
+for that next 2 A.M issue well we
+0:53
+combine the power of
+0:55
+ansible and the power of AI it's pretty
+0:58
+simple actually when you have the right
+1:00
+Platforms in place it was all four steps
+1:03
+step one when the system went down all
+1:05
+the error messages were sent into our
+1:06
+logging system let's call these events
+1:09
+and while I manually clicked a button
+1:10
+this time this could be automatically
+1:12
+executed by using event driven anible
+1:15
+step two when events happen we make sure
+1:18
+we track all of those for example
+1:20
+service now and we use AI to figure out
+1:23
+what those events
+1:24
+mean step three once AI provides a
+1:28
+solution it automatically connect
+1:29
+connects with our automation system to
+1:31
+fix the problem and put everything back
+1:33
+to normal step four once it's fixed
+1:37
+everything is loged so the team can
+1:38
+learn from that event and what happened
+1:41
+and be more prepared the next
+1:43
+time and yeah that is a lot of powerful
+1:45
+technology under the covers to make this
+1:47
+all happen but the good news is it's all
+1:49
+real and all available now so do you
+1:52
+want to give your team the superpower of
+1:53
+making 2 a.m. less painful for your
+1:55
+business click the link below to learn
+1:58
+more
+
+
+
+https://www.youtube.com/watch?v=a3fCHd2vTXU&list=PLdu06OJoEf2Y9-d7vPaKSh6ED_rO6AQFF&index=2
+
+
+https://www.redhat.com/en/topics/ai/what-is-aiops?sc_cid=7015Y000003t3zHQAQ
+
+What is AIOps?
