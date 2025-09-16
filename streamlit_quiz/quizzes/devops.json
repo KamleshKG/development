@@ -1,0 +1,261 @@
+{
+  "roles": ["DevOps Engg", "SRE", "QA", "Developer", "user"],
+  "questions": [
+    {
+      "question": "What is the main goal of DevSecOps?",
+      "options": ["To hire a dedicated security team.", "To integrate security practices throughout the entire DevOps lifecycle.", "To add security checks only at the end of the deployment pipeline.", "To make developers solely responsible for security."],
+      "answer": ["To integrate security practices throughout the entire DevOps lifecycle."],
+      "is_multi_select": false,
+      "hint": "It's about embedding security, not just adding it on.",
+      "rationale": "DevSecOps aims to make security a shared responsibility by integrating it from the very beginning ('shift left') of the software development lifecycle."
+    },
+    {
+      "question": "Which security tool is used to analyze a running application for vulnerabilities by attacking it from the outside?",
+      "options": ["Static Application Security Testing (SAST)", "Dynamic Application Security Testing (DAST)", "Software Composition Analysis (SCA)"],
+      "answer": ["Dynamic Application Security Testing (DAST)"],
+      "is_multi_select": false,
+      "hint": "This tool is 'dynamic' because it tests the app while it's in a running state.",
+      "rationale": "DAST tools test the application from an external perspective, simulating a hacker's view by analyzing the app's behavior while it is running."
+    },
+    {
+      "question": "What is the primary purpose of a CI/CD pipeline?",
+      "options": ["To automate software delivery.", "To manually deploy code.", "To write code faster.", "To monitor server performance."],
+      "answer": ["To automate software delivery."],
+      "is_multi_select": false,
+      "hint": "CI/CD is all about automation and continuous flow.",
+      "rationale": "A CI/CD pipeline automates the process of building, testing, and deploying software, reducing manual effort and errors."
+    },
+    {
+      "question": "Which of the following are core DORA metrics? (Select all that apply)",
+      "options": ["Deployment Frequency", "Mean Time to Recovery (MTTR)", "Change Failure Rate", "Lines of Code"],
+      "answer": ["Deployment Frequency", "Mean Time to Recovery (MTTR)", "Change Failure Rate"],
+      "is_multi_select": true,
+      "hint": "Think about the four metrics that measure both speed and stability.",
+      "rationale": "Deployment Frequency, Lead Time for Changes, Mean Time to Recovery (MTTR), and Change Failure Rate are the four key DORA metrics for measuring DevOps performance."
+    },
+    {
+      "question": "What is Infrastructure as Code (IaC)?",
+      "options": ["Writing scripts to manually configure servers.", "Managing and provisioning infrastructure through code instead of manual processes.", "Using a GUI to create cloud resources.", "Deploying applications directly to production without any testing."],
+      "answer": ["Managing and provisioning infrastructure through code instead of manual processes."],
+      "is_multi_select": false,
+      "hint": "The key is treating your infrastructure setup like application code, with version control and automated deployments.",
+      "rationale": "IaC is the practice of managing and provisioning infrastructure using machine-readable definition files, enabling consistent and repeatable environments."
+    },
+    {
+      "question": "How would you implement a blue-green deployment strategy?",
+      "options": ["Deploying a new version to a subset of users before a full rollout.", "Creating two identical production environments (blue and green) and switching traffic to the new one.", "Updating a running application instance in-place with the new version.", "Gradually replacing old instances with new ones in a cluster."],
+      "answer": ["Creating two identical production environments (blue and green) and switching traffic to the new one."],
+      "is_multi_select": false,
+      "hint": "Think about having two identical environments where you switch traffic between them.",
+      "rationale": "Blue-green deployment involves two identical environments. The new version is deployed to the 'green' environment, and traffic is switched from the 'blue' to the 'green' one. This allows for a fast and easy rollback."
+    },
+    {
+      "question": "Which of the following are key components of a well-architected Kubernetes cluster for a production environment? (Select all that apply)",
+      "options": ["A single master node for simplicity.", "A dedicated service mesh like Istio for microservices communication.", "A robust logging and monitoring stack (e.g., Prometheus and Grafana).", "A secret management solution (e.g., HashiCorp Vault or Kubernetes Secrets)."],
+      "answer": ["A dedicated service mesh like Istio for microservices communication.", "A robust logging and monitoring stack (e.g., Prometheus and Grafana).", "A secret management solution (e.g., HashiCorp Vault or Kubernetes Secrets)."],
+      "is_multi_select": true,
+      "hint": "Consider the key pillars of a scalable and resilient system: high availability, security, and observability.",
+      "rationale": "A production cluster needs high availability (multiple masters), security (secret management), and observability (monitoring/logging). A service mesh is critical for managing microservices communication."
+    },
+    {
+      "question": "What is the primary difference between a Git `rebase` and a Git `merge`?",
+      "options": ["`rebase` creates a new merge commit, while `merge` rewrites the project history.", "`rebase` moves the base of a branch to a new commit, creating a linear history, while `merge` integrates changes with a merge commit.", "`merge` is used for feature branches, and `rebase` is used for bug fixes.", "`rebase` is a faster operation than `merge`."],
+      "answer": ["`rebase` moves the base of a branch to a new commit, creating a linear history, while `merge` integrates changes with a merge commit."],
+      "is_multi_select": false,
+      "hint": "`rebase` is about creating a clean, linear history, while `merge` keeps a record of every branch merge.",
+      "rationale": "`rebase` rewrites the history by re-applying commits on top of another branch, resulting in a cleaner, linear history. `merge` combines two branches by creating a new merge commit."
+    },
+    {
+      "question": "Explain the concept of 'infrastructure drift' and how to prevent it.",
+      "options": ["Infrastructure drift is the unplanned change in infrastructure that deviates from its desired state, and it can be prevented by manually updating servers frequently.", "Infrastructure drift is the unplanned deviation of infrastructure from its desired state, which can be mitigated by using Infrastructure as Code (IaC) and a CI/CD pipeline for all changes.", "Infrastructure drift is a type of network latency, and it can be solved by upgrading network hardware.", "Infrastructure drift refers to outdated monitoring systems, which can be fixed by implementing new monitoring tools."],
+      "answer": ["Infrastructure drift is the unplanned deviation of infrastructure from its desired state, which can be mitigated by using Infrastructure as Code (IaC) and a CI/CD pipeline for all changes."],
+      "is_multi_select": false,
+      "hint": "Think about the gap between what you *expect* your infrastructure to be and what it *actually* is.",
+      "rationale": "IaC ensures that the configuration is managed as code, and a CI/CD pipeline ensures that all changes are applied in a consistent, automated way, preventing manual changes that cause drift."
+    },
+    {
+      "question": "What is the purpose of a service mesh in a microservices architecture? (Select all that apply)",
+      "options": ["To handle service-to-service communication.", "To replace the container runtime (e.g., Docker).", "To provide advanced traffic management and load balancing.", "To automate the provisioning of virtual machines."],
+      "answer": ["To handle service-to-service communication.", "To provide advanced traffic management and load balancing."],
+      "is_multi_select": true,
+      "hint": "A service mesh sits on top of a container orchestrator and focuses on the 'networking' of your microservices.",
+      "rationale": "A service mesh provides a dedicated layer for managing and observing communication between microservices, including advanced traffic control like canary releases and circuit breakers."
+    },
+    {
+      "question": "Design a resilient and highly available CI/CD pipeline for a cloud-native application. What core components would you include and why?",
+      "options": ["A single, self-hosted Jenkins server and manual approvals for every deployment.", "A serverless or managed CI/CD service, automated testing at every stage, immutable container images, and a GitOps-based deployment strategy.", "A script that pulls the latest code from Git and deploys it directly to production.", "A pipeline that only runs nightly builds and requires a full manual regression test before deployment."],
+      "answer": ["A serverless or managed CI/CD service, automated testing at every stage, immutable container images, and a GitOps-based deployment strategy."],
+      "is_multi_select": false,
+      "hint": "Think about how to eliminate single points of failure, automate everything, and ensure your system state is always traceable.",
+      "rationale": "This approach uses managed services for resilience, automates all testing, ensures consistency with immutable images, and applies changes declaratively via Git, which are all best practices for a resilient pipeline."
+    },
+    {
+      "question": "What is the 'principle of least privilege' and how is it applied in a DevOps context?",
+      "options": ["Granting all team members full administrative access to all systems for faster collaboration.", "Granting only the necessary permissions for a user or service to perform its specific task, which can be applied using tools like IAM roles and temporary credentials.", "Restricting access to the codebase to only one developer at a time.", "Allowing all operations to be performed manually so that an audit trail can be created."],
+      "answer": ["Granting only the necessary permissions for a user or service to perform its specific task, which can be applied using tools like IAM roles and temporary credentials."],
+      "is_multi_select": false,
+      "hint": "It's a security principle where you grant the minimal set of permissions needed to do a job.",
+      "rationale": "In a DevOps context, it is applied by using fine-grained access controls and automated tools to ensure that no person or service has more permissions than are absolutely necessary, reducing the attack surface."
+    },
+    {
+      "question": "What is a container?",
+      "options": ["A lightweight, standalone, executable package of software that includes everything needed to run an application.", "A fully isolated virtual machine with its own operating system.", "A programming language for microservices.", "A cloud storage service for application data."],
+      "answer": ["A lightweight, standalone, executable package of software that includes everything needed to run an application."],
+      "is_multi_select": false,
+      "hint": "Think of a standardized unit of software.",
+      "rationale": "A container packages code and its dependencies together, allowing the application to run quickly and reliably from one computing environment to another."
+    },
+    {
+      "question": "Which of the following are benefits of using a container orchestrator like Kubernetes? (Select all that apply)",
+      "options": ["Service discovery and load balancing", "Automated rollouts and rollbacks", "Automatic compilation of source code.", "Storage orchestration"],
+      "answer": ["Service discovery and load balancing", "Automated rollouts and rollbacks", "Storage orchestration"],
+      "is_multi_select": true,
+      "hint": "Think about the operational challenges of running many containers that the orchestrator solves.",
+      "rationale": "Kubernetes automates the deployment, scaling, and management of containerized applications, including service discovery, load balancing, storage, and self-healing rollouts/rollbacks."
+    },
+    {
+      "question": "What is the main goal of 'Shift Left' in DevOps?",
+      "options": ["To delay testing until after deployment.", "To integrate testing, security, and operations early in the software development lifecycle.", "To move all development teams to a left-wing political ideology.", "To use only left-aligned text in code comments."],
+      "answer": ["To integrate testing, security, and operations early in the software development lifecycle."],
+      "is_multi_select": false,
+      "hint": "It's about moving processes earlier (to the 'left') on a timeline.",
+      "rationale": "Shift Left means addressing potential issues like bugs, security vulnerabilities, and operational concerns as early as possible in the development process, rather than at the end."
+    },
+    {
+      "question": "In Kubernetes, what is the difference between a `Deployment` and a `Pod`?",
+      "options": ["A `Pod` is a declarative way to manage a set of replicas of a `Deployment`.", "A `Pod` is the smallest deployable unit, which runs one or more containers. A `Deployment` is a higher-level abstraction that manages the creation and scaling of Pods.", "A `Deployment` is used for stateless apps, and a `Pod` is used for stateful apps.", "There is no difference; the terms are interchangeable."],
+      "answer": ["A `Pod` is the smallest deployable unit, which runs one or more containers. A `Deployment` is a higher-level abstraction that manages the creation and scaling of Pods."],
+      "is_multi_select": false,
+      "hint": "One is a single instance, the other manages many instances.",
+      "rationale": "A Pod is a single instance. A Deployment ensures that a specified number of Pod replicas are running and provides updates and rollbacks."
+    },
+    {
+      "question": "What is the primary advantage of using immutable infrastructure?",
+      "options": ["It allows for in-place updates and patches on running servers.", "It reduces costs by using older, cheaper hardware.", "It ensures consistency and reliability by replacing servers instead of changing them, eliminating configuration drift.", "It requires less expertise to manage than mutable infrastructure."],
+      "answer": ["It ensures consistency and reliability by replacing servers instead of changing them, eliminating configuration drift."],
+      "is_multi_select": false,
+      "hint": "Think 'replace, don't modify'.",
+      "rationale": "The core advantage is consistency and reliability. If you need to change something, you build a new image (e.g., AMI, container) and replace the old instance entirely, which prevents drift."
+    },
+    {
+      "question": "What is GitOps?",
+      "options": ["A version control system for operations teams.", "A paradigm where the entire system state is declared in a Git repository, and an automated process ensures the live environment matches that state.", "A strategy for using Git for backup and recovery.", "A feature branch naming convention."],
+      "answer": ["A paradigm where the entire system state is declared in a Git repository, and an automated process ensures the live environment matches that state."],
+      "is_multi_select": false,
+      "hint": "It extends DevOps practices by using Git as the central truth for operations.",
+      "rationale": "Git is the single source of truth for both application and infrastructure code, and automated tools reconcile the state, making deployments auditable and reversible."
+    },
+    {
+      "question": "When troubleshooting a sudden performance degradation in a production microservice, what is a logical sequence of steps to follow?",
+      "options": ["Revert the last deployment, then check logs and metrics.", "Check dashboards and metrics for resource usage (CPU, memory), then examine application logs for errors, then trace specific requests to identify bottlenecks.", "Immediately scale up the service by adding more replicas.", "Restart all instances of the service simultaneously."],
+      "answer": ["Check dashboards and metrics for resource usage (CPU, memory), then examine application logs for errors, then trace specific requests to identify bottlenecks."],
+      "is_multi_select": false,
+      "hint": "Start broad (observability) and then get specific (logs/traces).",
+      "rationale": "This is a systematic approach: start with high-level metrics to identify the symptom, then drill down into logs and traces to find the root cause before taking drastic action."
+    },
+    {
+      "question": "What is the role of a 'sidecar' container in a Kubernetes Pod?",
+      "options": ["It is the main container that runs the application business logic.", "It runs alongside the main app container to provide supplemental functionality like logging, monitoring, or proxying.", "It is used to bootstrap the Kubernetes node itself.", "It is a container that only runs if the main application container fails."],
+      "answer": ["It runs alongside the main app container to provide supplemental functionality like logging, monitoring, or proxying."],
+      "is_multi_select": false,
+      "hint": "Think of a motorcycle sidecar: it's attached to the main vehicle and provides extra utility.",
+      "rationale": "The sidecar extends and enhances the main container without changing its functionality (e.g., a log shipper, a service mesh proxy)."
+    },
+    {
+      "question": "How does a canary deployment strategy work?",
+      "options": ["It involves deploying a new version to a small percentage of users to validate it before rolling it out to everyone.", "It uses two identical environments and switches all traffic at once.", "It automatically rolls back a deployment if a singing bird is detected near the data center.", "It deploys the new version only during low-traffic hours."],
+      "answer": ["It involves deploying a new version to a small percentage of users to validate it before rolling it out to everyone."],
+      "is_multi_select": false,
+      "hint": "It's named after the 'canary in a coal mine' concept for early warning.",
+      "rationale": "Traffic is gradually shifted to the new version (the canary) to minimize risk. If metrics show problems, the rollout is halted and rolled back."
+    },
+    {
+      "question": "What is the purpose of a liveness probe in Kubernetes?",
+      "options": ["To check if the container is started and ready to receive traffic.", "To check if the container is running. If it fails, the kubelet restarts the container.", "To provide metrics about the container's memory usage.", "To determine when the container can be scaled up or down."],
+      "answer": ["To check if the container is running. If it fails, the kubelet restarts the container."],
+      "is_multi_select": false,
+      "hint": "It answers the question: 'Is this container alive, or should it be killed and restarted?'",
+      "rationale": "A liveness probe detects deadlock situations where the app is running but unable to make progress. Failure triggers a restart."
+    },
+    {
+      "question": "What is the main purpose of a configuration management tool like Ansible, Chef, or Puppet?",
+      "options": ["To version control application source code.", "To automate the provisioning of cloud infrastructure like VMs and networks.", "To automate the configuration and management of software and systems on existing servers.", "To containerize applications."],
+      "answer": ["To automate the configuration and management of software and systems on existing servers."],
+      "is_multi_select": false,
+      "hint": "These tools are often used for 'baking' machine images or configuring mutable servers.",
+      "rationale": "These tools are designed to install software, manage files, and ensure servers are in a desired, consistent state."
+    },
+    {
+      "question": "Which of the following statements about Dockerfile best practices are true? (Select all that apply)",
+      "options": ["Use a specific version tag for the base image (e.g., `node:16-alpine`) instead of a generic tag (e.g., `node:latest`).", "Combine multiple RUN commands into one using `&&` and `\\` to reduce the number of layers.", "Copy the entire application directory into the image in the first COPY instruction for simplicity.", "Run the application as the root user inside the container for maximum compatibility."],
+      "answer": ["Use a specific version tag for the base image (e.g., `node:16-alpine`) instead of a generic tag (e.g., `node:latest`).", "Combine multiple RUN commands into one using `&&` and `\\` to reduce the number of layers."],
+      "is_multi_select": true,
+      "hint": "Think about security, efficiency, and build reproducibility.",
+      "rationale": "Using specific tags ensures predictable builds. Combining RUN commands reduces image layers, making the image slightly more efficient. Copying the entire app dir first is inefficient for caching, and running as root is a security risk."
+    },
+    {
+      "question": "What is the primary benefit of using a distributed version control system like Git over a centralized one like SVN?",
+      "options": ["It requires a constant internet connection to commit code.", "Every developer has a full copy of the repository history, enabling offline work and faster operations.", "It is easier to learn for beginners.", "It automatically deploys code to production upon commit."],
+      "answer": ["Every developer has a full copy of the repository history, enabling offline work and faster operations."],
+      "is_multi_select": false,
+      "hint": "The key is in the word 'distributed'.",
+      "rationale": "The key advantage is that it provides redundancy, allows for branching and merging offline, and is generally faster for most operations because they are performed locally."
+    },
+    {
+      "question": "In the context of monitoring, what is the difference between metrics and logs?",
+      "options": ["Metrics are for alerting, and logs are for debugging.", "Metrics are numerical measurements over time, while logs are timestamped event records.", "Logs are stored in Prometheus, and metrics are stored in Loki.", "There is no practical difference; the terms are interchangeable."],
+      "answer": ["Metrics are numerical measurements over time, while logs are timestamped event records."],
+      "is_multi_select": false,
+      "hint": "One is about numbers and trends, the other is about discrete events and context.",
+      "rationale": "Metrics are numbers (e.g., CPU usage, request rate). Logs are structured or unstructured text events (e.g., error messages, access records). They are distinct types of observability data."
+    },
+    {
+      "question": "What is the purpose of a 'reverse proxy' in a web application architecture?",
+      "options": ["To hide the identities of clients making requests to the server.", "To terminate SSL/TLS connections, load balance traffic, and route requests to backend services.", "To proxy database connections for improved security.", "To compile TypeScript code into JavaScript on the fly."],
+      "answer": ["To terminate SSL/TLS connections, load balance traffic, and route requests to backend services."],
+      "is_multi_select": false,
+      "hint": "It's a single entry point that sits in front of your application servers.",
+      "rationale": "A reverse proxy (e.g., Nginx, Traefik) sits in front of backend servers and handles these tasks, abstracting away the internal architecture and improving security and performance."
+    },
+    {
+      "question": "What is a '12-Factor App' and why is it relevant to DevOps?",
+      "options": ["An app built by a team of exactly twelve developers.", "A methodology for building SaaS applications that are scalable, maintainable, and portable, which aligns perfectly with DevOps practices and cloud-native development.", "An application that uses twelve different programming languages.", "A compliance standard requiring twelve-factor authentication."],
+      "answer": ["A methodology for building SaaS applications that are scalable, maintainable, and portable, which aligns perfectly with DevOps practices and cloud-native development."],
+      "is_multi_select": false,
+      "hint": "It's a set of principles for building modern, cloud-ready applications.",
+      "rationale": "The twelve factors (like config in environment, stateless processes, disposability) create apps that are easy to deploy, scale, and manage in modern platforms like Kubernetes, which is a core DevOps goal."
+    },
+    {
+      "question": "You need to securely manage secrets (API keys, database passwords) for a Kubernetes application. Which of the following are considered best practices? (Select all that apply)",
+      "options": ["Store them as environment variables defined directly in the Pod YAML file.", "Use a dedicated secrets management tool like HashiCorp Vault and inject them dynamically at runtime.", "Use Kubernetes Secrets, but ensure they are not checked into version control and are encrypted at rest (e.g., with etcd encryption).", "Email them to the development team for safekeeping."],
+      "answer": ["Use a dedicated secrets management tool like HashiCorp Vault and inject them dynamically at runtime.", "Use Kubernetes Secrets, but ensure they are not checked into version control and are encrypted at rest (e.g., with etcd encryption)."],
+      "is_multi_select": true,
+      "hint": "Think about encryption, access control, and avoiding plaintext storage.",
+      "rationale": "Tools like Vault provide encryption, access control, auditing, and dynamic secrets generation. While native Secrets are base64-encoded (not encrypted) by default, encrypting them at rest is a minimum requirement for production. Storing in plain YAML or emailing are major security violations."
+    },
+    {
+      "question": "What is the primary purpose of a 'feature flag' (or feature toggle)?",
+      "options": ["To permanently disable a broken feature in the code.", "To enable or disable a feature at runtime without deploying new code.", "To mark a section of code as a new feature for documentation purposes.", "To improve the compilation speed of the application."],
+      "answer": ["To enable or disable a feature at runtime without deploying new code."],
+      "is_multi_select": false,
+      "hint": "It's a technique for separating 'code deployment' from 'feature release'.",
+      "rationale": "Feature flags allow for decoupling deployment from release, enabling canary launches, A/B testing, and quick rollbacks by simply toggling the flag off."
+    },
+    {
+      "question": "What is 'ChatOps' and what is its main benefit?",
+      "options": ["A protocol for chatbots to communicate with each other.", "The practice of performing operations and automation tasks through a chat interface, like Slack or Microsoft Teams.", "A method for customers to report bugs via chat.", "A strategy for outsourcing DevOps work to remote teams via chat applications."],
+      "answer": ["The practice of performing operations and automation tasks through a chat interface, like Slack or Microsoft Teams."],
+      "is_multi_select": false,
+      "hint": "It combines conversation and automation in a shared chat environment.",
+      "rationale": "Its main benefit is transparency and collaboration. It brings tools, people, process, and automation into a transparent workflow centered around chat, making actions and their outcomes visible to the entire team."
+    },
+    {
+      "question": "What is the difference between continuous integration (CI) and continuous delivery (CD)?",
+      "options": ["They are the same thing; the terms are interchangeable.", "CI is about automating the build and test process, while CD automates the delivery of that code to environments (like staging or production).", "CI is for developers, and CD is for operations teams.", "CI uses Jenkins, and CD uses GitLab."],
+      "answer": ["CI is about automating the build and test process, while CD automates the delivery of that code to environments (like staging or production)."],
+      "is_multi_select": false,
+      "hint": "One focuses on the 'integrate and test' phase, the other on the 'release and deploy' phase.",
+      "rationale": "CI ensures code changes are integrated and tested. CD extends this by automating the release process, making deployments to staging or production a low-risk, repeatable event. Continuous Deployment is a further step where every change that passes the pipeline is automatically deployed to production."
+    }
+  ]
+}

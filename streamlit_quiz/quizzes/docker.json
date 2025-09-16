@@ -1,0 +1,21 @@
+{
+  "roles": ["DevOps Engg", "SRE", "Developer","user"],
+  "questions": [
+    {
+      "question": "What is a Docker container?",
+      "options": ["A lightweight, standalone, executable package that includes everything needed to run a piece of software.", "A virtual machine.", "A type of serverless function.", "A public repository for code."],
+      "answer": ["A lightweight, standalone, executable package that includes everything needed to run a piece of software."],
+      "is_multi_select": false,
+      "hint": "Containers package up code and dependencies.",
+      "rationale": "A Docker container is a standardized package that bundles an application's code, runtime, libraries, and dependencies into a single, isolated unit."
+    },
+    {
+      "question": "Which of the following are components of a Dockerfile?",
+      "options": ["FROM", "RUN", "COMMIT", "CMD"],
+      "answer": ["FROM", "RUN", "CMD"],
+      "is_multi_select": true,
+      "hint": "Think about the instructions used to build an image from scratch.",
+      "rationale": "A Dockerfile uses instructions like FROM, RUN, and CMD to define the steps for building a Docker image. 'COMMIT' is a Docker command, not a Dockerfile instruction."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "roles": ["DevOps Engg", "SRE", "Developer","user"],
+  "questions": [
+    {
+      "question": "What is a Kubernetes Pod?",
+      "options": ["A virtual machine.", "A physical server.", "The smallest deployable unit in Kubernetes that contains one or more containers.", "A single container."],
+      "answer": ["The smallest deployable unit in Kubernetes that contains one or more containers."],
+      "is_multi_select": false,
+      "hint": "A Pod is the fundamental unit of deployment in K8s.",
+      "rationale": "A Pod is the smallest and most basic unit in the Kubernetes object model. It represents a single instance of an application running in a cluster and can contain one or more containers."
+    },
+    {
+      "question": "Which of the following are benefits of using Kubernetes?",
+      "options": ["Automated scaling.", "Self-healing capabilities.", "Centralized secrets management.", "Zero-effort management."],
+      "answer": ["Automated scaling.", "Self-healing capabilities.", "Centralized secrets management."],
+      "is_multi_select": true,
+      "hint": "Kubernetes is known for its automation and reliability features.",
+      "rationale": "Kubernetes provides robust features for automated scaling, self-healing (restarting failed containers), and centralized secrets and configuration management."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "roles": ["Developer", "FL","user"],
+  "questions": [
+    {
+      "question": "What is the purpose of the `public static void main(String[] args)` method in Java?",
+      "options": ["It is used to import a library.", "It is the entry point for a Java application.", "It declares a new variable.", "It prints output to the console."],
+      "answer": ["It is the entry point for a Java application."],
+      "is_multi_select": false,
+      "hint": "This is the first piece of code to run when a Java program starts.",
+      "rationale": "`public static void main(String[] args)` is the standard entry point for any Java program. The Java Virtual Machine (JVM) looks for this method to begin execution."
+    },
+    {
+      "question": "Which of the following are object-oriented programming (OOP) principles in Java?",
+      "options": ["Inheritance", "Polymorphism", "Abstraction", "Encapsulation", "Functional Programming"],
+      "answer": ["Inheritance", "Polymorphism", "Abstraction", "Encapsulation"],
+      "is_multi_select": true,
+      "hint": "The four pillars of OOP.",
+      "rationale": "The four main principles of OOP are Inheritance, Polymorphism, Abstraction, and Encapsulation."
+    }
+  ]
+}

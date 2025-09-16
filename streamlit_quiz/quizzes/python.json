@@ -1,0 +1,21 @@
+{
+  "roles": ["Developer", "Data Scientist", "FL","user"],
+  "questions": [
+    {
+      "question": "Which data structure in Python is mutable and can store elements of different data types?",
+      "options": ["Tuple", "List", "Set", "Dictionary"],
+      "answer": ["List"],
+      "is_multi_select": false,
+      "hint": "This structure is represented by square brackets `[]`.",
+      "rationale": "A list in Python is an ordered, mutable sequence that can hold elements of various data types."
+    },
+    {
+      "question": "Which of the following are valid ways to create a comment in Python?",
+      "options": ["// This is a comment", "# This is a comment", "''' This is a comment '''", ""],
+      "answer": ["# This is a comment", "''' This is a comment '''"],
+      "is_multi_select": true,
+      "hint": "Python uses a specific symbol for single-line comments and triple quotes for multi-line comments.",
+      "rationale": "The `#` symbol is used for single-line comments. Triple single quotes `'''` or triple double quotes `\"\"\"` are used for multi-line comments or docstrings."
+    }
+  ]
+}

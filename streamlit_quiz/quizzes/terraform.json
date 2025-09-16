@@ -1,0 +1,21 @@
+{
+  "roles": ["DevOps Engg", "SRE","user"],
+  "questions": [
+    {
+      "question": "What is a Terraform provider?",
+      "options": ["A cloud service provider (e.g., AWS, Azure).", "A plugin that allows Terraform to interact with an API.", "A built-in Terraform function.", "A configuration file."],
+      "answer": ["A plugin that allows Terraform to interact with an API."],
+      "is_multi_select": false,
+      "hint": "Providers are the bridge between Terraform and the infrastructure.",
+      "rationale": "A provider is a plugin in Terraform that is responsible for understanding API interactions and exposing resources."
+    },
+    {
+      "question": "Which of the following are key features of Terraform?",
+      "options": ["Declarative syntax.", "State management.", "Mutable infrastructure.", "Multi-cloud support."],
+      "answer": ["Declarative syntax.", "State management.", "Multi-cloud support."],
+      "is_multi_select": true,
+      "hint": "Terraform focuses on the desired end state and managing resource state.",
+      "rationale": "Terraform uses a declarative syntax to define the desired state, manages this state in a state file, and supports a wide range of cloud providers for multi-cloud deployments. It is typically used for immutable infrastructure."
+    }
+  ]
+}

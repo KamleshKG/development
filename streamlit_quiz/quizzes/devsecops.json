@@ -1,0 +1,545 @@
+{
+  "roles": ["DevSecOps Engg", "Security Engineer", "DevOps Engg", "Developer"],
+  "questions": [
+    {
+      "question": "What is the core principle of DevSecOps?",
+      "options": ["Security is the sole responsibility of the security team.", "Security testing should only be done right before release.", "Everyone is responsible for security, and it is integrated throughout the entire SDLC.", "To slow down development to ensure perfect security."],
+      "answer": ["Everyone is responsible for security, and it is integrated throughout the entire SDLC."],
+      "is_multi_select": false,
+      "hint": "It's about shifting security left and making it a shared responsibility.",
+      "rationale": "DevSecOps aims to break down silos and embed security practices into every phase of the software development lifecycle, making it a collective responsibility.",
+      "level": "Beginner"
+    },
+    {
+      "question": "Which security testing method analyzes an application's source code for vulnerabilities without executing it?",
+      "options": ["Dynamic Application Security Testing (DAST)", "Interactive Application Security Testing (IAST)", "Static Application Security Testing (SAST)", "Penetration Testing"],
+      "answer": ["Static Application Security Testing (SAST)"],
+      "is_multi_select": false,
+      "hint": "This method is 'static' because it examines the code at rest.",
+      "rationale": "SAST tools scan an application's source, bytecode, or binary code for vulnerabilities early in the development process (shift-left).",
+      "level": "Beginner"
+    },
+    {
+      "question": "What is the primary goal of a Software Bill of Materials (SBOM)?",
+      "options": ["To calculate the total cost of software development.", "To provide a nested inventory of all components and dependencies in a software application.", "To list all the developers who worked on a project.", "To serve as a software license agreement."],
+      "answer": ["To provide a nested inventory of all components and dependencies in a software application."],
+      "is_multi_select": false,
+      "hint": "Think of it as an ingredient list for your software.",
+      "rationale": "An SBOM is critical for transparency, allowing organizations to quickly identify and remediate vulnerabilities found in open-source or third-party dependencies.",
+      "level": "Beginner"
+    },
+    {
+      "question": "Which tool is commonly used for Infrastructure as Code (IaC) security scanning to detect misconfigurations?",
+      "options": ["SonarQube", "Checkmarx", "Snyk", "Terrascan"],
+      "answer": ["Terrascan"],
+      "is_multi_select": false,
+      "hint": "This tool's name is a play on 'Terraform' and 'scan'.",
+      "rationale": "Terrascan is a static code analyzer for Terraform that helps detect security compliance violations and misconfigurations before provisioning infrastructure.",
+      "level": "Beginner"
+    },
+    {
+      "question": "What does SCA stand for in application security?",
+      "options": ["Security Compliance Audit", "Software Composition Analysis", "System Control Authority", "Secure Code Assessment"],
+      "answer": ["Software Composition Analysis"],
+      "is_multi_select": false,
+      "hint": "It focuses on analyzing the third-party 'composition' of your software.",
+      "rationale": "Software Composition Analysis (SCA) tools automatically identify open-source components in a codebase and detect known security vulnerabilities, licenses, and outdated versions.",
+      "level": "Beginner"
+    },
+    {
+      "question": "What is a 'secrets management' tool, and why is it crucial in DevSecOps?",
+      "options": ["A tool for managing confidential meeting notes.", "A tool for securely storing, accessing, and managing sensitive data like API keys, passwords, and tokens.", "A tool for managing user access to version control systems.", "A tool for encrypting entire application binaries."],
+      "answer": ["A tool for securely storing, accessing, and managing sensitive data like API keys, passwords, and tokens."],
+      "is_multi_select": false,
+      "hint": "It prevents secrets from being hard-coded in source code.",
+      "rationale": "Secrets management tools (e.g., HashiCorp Vault, AWS Secrets Manager) prevent the exposure of credentials by providing a secure, centralized platform to manage and audit access to secrets, which is a fundamental security practice.",
+      "level": "Beginner"
+    },
+    {
+      "question": "What is the main security risk associated with using a container image with the 'latest' tag?",
+      "options": ["It is always more expensive.", "It guarantees the most secure version.", "The image's contents are unpredictable and could introduce breaking changes or new vulnerabilities.", "It is not supported by container registries."],
+      "answer": ["The image's contents are unpredictable and could introduce breaking changes or new vulnerabilities."],
+      "is_multi_select": false,
+      "hint": "The 'latest' tag is a moving target.",
+      "rationale": "The 'latest' tag is mutable and can change over time. Using a specific digest or version tag ensures predictability and allows for vulnerability scanning of a known, immutable artifact.",
+      "level": "Beginner"
+    },
+    {
+      "question": "Which practice involves automatically checking code for security issues during the commit or pull request phase?",
+      "options": ["Incident Response", "Pre-Commit Hooks / Git Hooks", "Disaster Recovery", "Threat Modeling"],
+      "answer": ["Pre-Commit Hooks / Git Hooks"],
+      "is_multi_select": false,
+      "hint": "This acts as a gate before code is even shared with the team.",
+      "rationale": "Pre-commit hooks can run lightweight security scans (e.g., secret detection, basic SAST) on the developer's machine before code is committed, catching issues at the earliest possible stage.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the purpose of a container image vulnerability scanner?",
+      "options": ["To compile source code into a binary.", "To analyze a running container's network traffic.", "To identify known vulnerabilities within the operating system and application packages inside a container image.", "To optimize the size of a container image."],
+      "answer": ["To identify known vulnerabilities within the operating system and application packages inside a container image."],
+      "is_multi_select": false,
+      "hint": "It scans the layers of an image against databases like CVE.",
+      "rationale": "These scanners (e.g., Trivy, Grype, Docker Scout) are essential for shifting security left, allowing teams to find and fix vulnerabilities in images before they are deployed to production.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "In a CI/CD pipeline, what is the security benefit of using immutable infrastructure?",
+      "options": ["It allows for easy manual patching of live servers.", "It reduces the cost of cloud resources.", "It eliminates configuration drift and ensures that systems are provisioned from a known, secure state every time.", "It makes servers boot faster."],
+      "answer": ["It eliminates configuration drift and ensures that systems are provisioned from a known, secure state every time."],
+      "is_multi_select": false,
+      "hint": "Think 'replace, don't modify'.",
+      "rationale": "Immutable infrastructure means that instead of patching a running server, you build a new image from a base image that has been updated and scanned for vulnerabilities. This practice guarantees consistency and eliminates the risks associated with manual, ad-hoc changes.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the key difference between SAST and DAST? (Select all that apply)",
+      "options": ["SAST requires access to source code; DAST does not.", "SAST tests a running application; DAST tests static code.", "SAST is a white-box testing method; DAST is a black-box testing method.", "DAST can find runtime vulnerabilities; SAST cannot."],
+      "answer": ["SAST requires access to source code; DAST does not.", "SAST is a white-box testing method; DAST is a black-box testing method.", "DAST can find runtime vulnerabilities; SAST cannot."],
+      "is_multi_select": true,
+      "hint": "One looks inside the application, the other attacks it from the outside.",
+      "rationale": "SAST (white-box) analyzes the source code internally for flaws. DAST (black-box) tests the application from the outside while it's running, finding issues like runtime misconfigurations and authentication problems that SAST might miss.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is Threat Modeling?",
+      "options": ["Creating models of cybercriminals.", "A structured process to identify and prioritize potential security threats and vulnerabilities to a system.", "A method for testing network bandwidth.", "The process of writing security requirements."],
+      "answer": ["A structured process to identify and prioritize potential security threats and vulnerabilities to a system."],
+      "is_multi_select": false,
+      "hint": "It's about thinking like an attacker before building the system.",
+      "rationale": "Threat modeling is a proactive approach where teams analyze the design of a system to identify potential security threats (e.g., using STRIDE) and implement mitigations early in the design phase.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "Which AWS service provides managed vulnerability scanning for container images?",
+      "options": ["AWS Inspector", "AWS GuardDuty", "AWS Config", "AWS Shield"],
+      "answer": ["AWS Inspector"],
+      "is_multi_select": false,
+      "hint": "It 'inspects' your workloads for vulnerabilities.",
+      "rationale": "Amazon Inspector automatically scans container images in Amazon ECR for software vulnerabilities and network reachability issues.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is a 'false positive' in the context of security scanning?",
+      "options": ["A correctly identified vulnerability.", "A test that passes successfully.", "A result that incorrectly indicates a vulnerability is present.", "A highly critical vulnerability."],
+      "answer": ["A result that incorrectly indicates a vulnerability is present."],
+      "is_multi_select": false,
+      "hint": "It's an alert that cries wolf when there's no real threat.",
+      "rationale": "High rates of false positives can lead to 'alert fatigue,' where developers start to ignore security tooling outputs. Tuning tools to reduce false positives is a key DevSecOps task.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the security purpose of using a non-root user inside a container?",
+      "options": ["To improve application performance.", "To comply with software licensing.", "To minimize the attack surface and impact of a container breakout.", "To make the container image smaller."],
+      "answer": ["To minimize the attack surface and impact of a container breakout."],
+      "is_multi_select": false,
+      "hint": "It follows the principle of least privilege.",
+      "rationale": "If an attacker manages to break out of the application, they will have the same privileges as the user running the container process. Running as a non-root user limits the potential damage.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the primary security risk that dependency confusion attacks exploit?",
+      "options": ["Weak passwords in databases.", "Misconfigured cloud storage buckets.", "The tendency of package managers to pull dependencies from public repositories before private ones.", "Unencrypted network traffic."],
+      "answer": ["The tendency of package managers to pull dependencies from public repositories before private ones."],
+      "is_multi_select": false,
+      "hint": "It confuses the source of a package.",
+      "rationale": "This attack involves uploading a malicious package with a higher version number to a public repository (e.g., npm, PyPI) using the same name as a private/internal package. The build system might then pull the malicious public package instead of the intended private one.",
+      "level": "Advanced"
+    },
+    {
+      "question": "How can a GitOps workflow enhance security?",
+      "options": ["By eliminating the need for a CI/CD pipeline.", "By making Git the single source of truth for infrastructure state, enabling audit trails, reproducibility, and automated, signed deployments.", "By allowing developers to deploy directly from their machines.", "By storing all secrets directly in the Git repository."],
+      "answer": ["By making Git the single source of truth for infrastructure state, enabling audit trails, reproducibility, and automated, signed deployments."],
+      "is_multi_select": false,
+      "hint": "It provides a declarative and auditable history of all changes.",
+      "rationale": "GitOps uses Git as the central declarative source. All changes are version-controlled, peer-reviewed via pull requests, and can be signed. Automated agents ensure the live environment matches the Git state, reducing manual intervention and its associated risks.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the role of a 'policy agent' like OPA (Open Policy Agent) or Kyverno in Kubernetes security?",
+      "options": ["To compile application code.", "To provide a domain-specific language to define and enforce security and compliance policies across the cluster.", "To manage node scalability.", "To replace the Kubernetes API server."],
+      "answer": ["To provide a domain-specific language to define and enforce security and compliance policies across the cluster."],
+      "is_multi_select": false,
+      "hint": "It acts as a gatekeeper for cluster configurations.",
+      "rationale": "Policy agents allow administrators to create 'guardrails' that automatically enforce policies (e.g., 'all containers must have a read-only root filesystem', 'all images must come from a trusted registry') at deployment time, preventing misconfigurations.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is a 'software supply chain attack'?",
+      "options": ["An attack on a physical shipping company that delivers software.", "An attack that compromises tools, infrastructure, or dependencies used in the software development process to infect the final delivered product.", "An attack that only targets open-source software.", "An attack on the software licensing server."],
+      "answer": ["An attack that compromises tools, infrastructure, or dependencies used in the software development process to infect the final delivered product."],
+      "is_multi_select": false,
+      "hint": "Think SolarWinds or the CodeCov breach.",
+      "rationale": "These attacks are highly effective because they can compromise a single component (like a build tool or a library) that is then distributed to many downstream users, amplifying the impact.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the security benefit of using signed commits and signed container images?",
+      "options": ["It makes the code run faster.", "It provides cryptographic proof of the origin and integrity of the code or artifact, ensuring it hasn't been tampered with.", "It automatically fixes vulnerabilities.", "It is required for all open-source projects."],
+      "answer": ["It provides cryptographic proof of the origin and integrity of the code or artifact, ensuring it hasn't been tampered with."],
+      "is_multi_select": false,
+      "hint": "It's about verifying authenticity and integrity.",
+      "rationale": "Signing artifacts creates a trust chain. You can verify that the code came from a trusted developer (commit signing) and that the container image you're running is exactly the one that was built by your CI system and hasn't been altered (image signing).",
+      "level": "Advanced"
+    },
+    {
+      "question": "In the context of secrets management, what are 'ephemeral secrets'?",
+      "options": ["Secrets that are not important.", "Secrets that are stored in a text file.", "Short-lived credentials that are automatically generated and revoked, reducing the risk of exposure from long-lived secrets.", "Secrets used for encryption at rest."],
+      "answer": ["Short-lived credentials that are automatically generated and revoked, reducing the risk of exposure from long-lived secrets."],
+      "is_multi_select": false,
+      "hint": "They exist only for a short, specific task.",
+      "rationale": "Tools like HashiCorp Vault can generate dynamic, short-lived secrets (e.g., database credentials) for applications. If these secrets are leaked, they are only valid for a very limited time, drastically reducing the blast radius.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What does IAST (Interactive Application Security Testing) stand for and how does it work?",
+      "options": ["It scans source code before compilation.", "It tests the application from the outside like a hacker.", "It uses instrumentation agents inside the application runtime to analyze code for vulnerabilities while the application is being used by automated tests.", "It only analyzes network traffic."],
+      "answer": ["It uses instrumentation agents inside the application runtime to analyze code for vulnerabilities while the application is being used by automated tests."],
+      "is_multi_select": false,
+      "hint": "It's a 'grey-box' testing method that combines elements of SAST and DAST.",
+      "rationale": "IAST tools have access to all the code, runtime control flow, data flow, and configuration information. This deep visibility allows for highly accurate vulnerability detection with fewer false positives than SAST or DAST alone.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the purpose of a 'canary token'?",
+      "options": ["A token used to authenticate to a canary deployment.", "A unique piece of data planted in your environment that, when accessed, triggers an alert, indicating a breach.", "A cryptocurrency used for bug bounties.", "A type of API key."],
+      "answer": ["A unique piece of data planted in your environment that, when accessed, triggers an alert, indicating a breach."],
+      "is_multi_select": false,
+      "hint": "It's a digital tripwire.",
+      "rationale": "Canary tokens are a form of deception technology. For example, placing a fake API key in your code or a fake AWS credential file. If an attacker finds and uses it, you receive an immediate alert that your systems have been compromised.",
+      "level": "Advanced"
+    },
+    {
+      "question": "How does a 'Chaos Engineering' practice like Netflix's Chaos Monkey contribute to security?",
+      "options": ["It deliberately hacks into systems to find vulnerabilities.", "It tests the system's resilience and security incident response by intentionally injecting failures in a controlled manner.", "It is used to generate chaotic encryption keys.", "It deletes all logs to test monitoring alerts."],
+      "answer": ["It tests the system's resilience and security incident response by intentionally injecting failures in a controlled manner."],
+      "is_multi_select": false,
+      "hint": "It builds confidence in the system's ability to withstand unexpected events.",
+      "rationale": "By proactively testing how systems behave under failure (e.g., terminating instances, injecting latency), teams can uncover hidden security flaws and ensure that fail-safes and monitoring alerting work correctly before a real incident occurs.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the primary security consideration when using a public cloud provider's Managed Service Identity (e.g., AWS IAM Roles, Azure Managed Identities)?",
+      "options": ["They are too expensive to use.", "They are not secure and should be avoided.", "Applying the principle of least privilege to the permissions assigned to the identity, even though the credentials are managed by the cloud provider.", "They require hardcoded credentials."],
+      "answer": ["Applying the principle of least privilege to the permissions assigned to the identity, even though the credentials are managed by the cloud provider."],
+      "is_multi_select": false,
+      "hint": "The cloud provider manages the credential rotation, but you manage the permissions.",
+      "rationale": "While these services eliminate the need to manage and rotate secret keys, the major security responsibility shifts to ensuring the associated role or identity has only the minimum permissions absolutely required for the application to function, preventing lateral movement in a breach.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the key difference between RASP and WAF?",
+      "options": ["There is no difference; they are the same thing.", "RASP (Runtime Application Self-Protection) runs on the server and protects the application from within, while WAF (Web Application Firewall) is a network-based filter that inspects HTTP traffic.", "WAF is for APIs, RASP is for web apps.", "RASP is open-source, WAF is commercial."],
+      "answer": ["RASP (Runtime Application Self-Protection) runs on the server and protects the application from within, while WAF (Web Application Firewall) is a network-based filter that inspects HTTP traffic."],
+      "is_multi_select": false,
+      "hint": "One is inside the application context, the other is outside at the network perimeter.",
+      "rationale": "WAF is a generalized, perimeter-based defense that can be bypassed by sophisticated attacks. RASP is embedded in the application runtime, giving it deep context to detect and block specific attacks with higher accuracy, but it consumes application resources.",
+      "level": "Advanced"
+    },
+    {
+      "question": "When implementing security into a CI/CD pipeline, what does the term 'gating' refer to?",
+      "options": ["Building a physical fence around the server rack.", "The practice of automatically preventing a build from progressing to the next stage if it fails a security policy check.", "The process of granting everyone access to production.", "A meeting to discuss security features."],
+      "answer": ["The practice of automatically preventing a build from progressing to the next stage if it fails a security policy check."],
+      "is_multi_select": false,
+      "hint": "It acts as a security gate in the pipeline.",
+      "rationale": "Gating is a critical control. For example, if a critical vulnerability is found in a container image during a scan, the pipeline can be configured to fail and prevent that image from being deployed to any environment, forcing remediation.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the primary security advantage of using a service mesh like Istio or Linkerd?",
+      "options": ["It compiles code faster.", "It provides built-in mutual TLS (mTLS) encryption for service-to-service communication, fine-grained access control, and observability without changing application code.", "It replaces the need for a firewall.", "It automatically writes secure code."],
+      "answer": ["It provides built-in mutual TLS (mTLS) encryption for service-to-service communication, fine-grained access control, and observability without changing application code."],
+      "is_multi_select": false,
+      "hint": "It secures the communication between services in a microservices architecture.",
+      "rationale": "A service mesh abstracts security and networking logic into a dedicated infrastructure layer (the sidecar proxy). This allows teams to enforce encryption (mTLS), authentication, and authorization policies consistently across all services, implementing a zero-trust network model.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the concept of 'Zero Trust' security in the context of a modern cloud-native application?",
+      "options": ["Trusting all traffic inside the corporate network.", "A security model that assumes no implicit trust is granted to assets or user accesses based solely on their physical or network location.", "A policy of having zero security tools.", "A law in the European Union."],
+      "answer": ["A security model that assumes no implicit trust is granted to assets or user accesses based solely on their physical or network location."],
+      "is_multi_select": false,
+      "hint": "'Never trust, always verify' is its motto.",
+      "rationale": "In a Zero Trust model, every request—even from within the internal network—must be authenticated, authorized, and encrypted. Access is granted on a per-session, least-privilege basis. This is crucial for defending against lateral movement by attackers who have breached the perimeter.",
+      "level": "Intermediate"
+    },
+  {
+      "question": "What is the core principle of DevSecOps?",
+      "options": ["Security is the sole responsibility of the security team.", "Security testing should only be done right before release.", "Everyone is responsible for security, and it is integrated throughout the entire SDLC.", "To slow down development to ensure perfect security."],
+      "answer": ["Everyone is responsible for security, and it is integrated throughout the entire SDLC."],
+      "is_multi_select": false,
+      "hint": "It's about shifting security left and making it a shared responsibility.",
+      "rationale": "DevSecOps aims to break down silos and embed security practices into every phase of the software development lifecycle, making it a collective responsibility.",
+      "level": "Beginner"
+    },
+    {
+      "question": "Which security testing method analyzes an application's source code for vulnerabilities without executing it?",
+      "options": ["Dynamic Application Security Testing (DAST)", "Interactive Application Security Testing (IAST)", "Static Application Security Testing (SAST)", "Penetration Testing"],
+      "answer": ["Static Application Security Testing (SAST)"],
+      "is_multi_select": false,
+      "hint": "This method is 'static' because it examines the code at rest.",
+      "rationale": "SAST tools scan an application's source, bytecode, or binary code for vulnerabilities early in the development process (shift-left).",
+      "level": "Beginner"
+    },
+    {
+      "question": "What is the primary goal of a Software Bill of Materials (SBOM)?",
+      "options": ["To calculate the total cost of software development.", "To provide a nested inventory of all components and dependencies in a software application.", "To list all the developers who worked on a project.", "To serve as a software license agreement."],
+      "answer": ["To provide a nested inventory of all components and dependencies in a software application."],
+      "is_multi_select": false,
+      "hint": "Think of it as an ingredient list for your software.",
+      "rationale": "An SBOM is critical for transparency, allowing organizations to quickly identify and remediate vulnerabilities found in open-source or third-party dependencies.",
+      "level": "Beginner"
+    },
+    {
+      "question": "Which tool is commonly used for Infrastructure as Code (IaC) security scanning to detect misconfigurations?",
+      "options": ["SonarQube", "Checkmarx", "Snyk", "Terrascan"],
+      "answer": ["Terrascan"],
+      "is_multi_select": false,
+      "hint": "This tool's name is a play on 'Terraform' and 'scan'.",
+      "rationale": "Terrascan is a static code analyzer for Terraform that helps detect security compliance violations and misconfigurations before provisioning infrastructure.",
+      "level": "Beginner"
+    },
+    {
+      "question": "What does SCA stand for in application security?",
+      "options": ["Security Compliance Audit", "Software Composition Analysis", "System Control Authority", "Secure Code Assessment"],
+      "answer": ["Software Composition Analysis"],
+      "is_multi_select": false,
+      "hint": "It focuses on analyzing the third-party 'composition' of your software.",
+      "rationale": "Software Composition Analysis (SCA) tools automatically identify open-source components in a codebase and detect known security vulnerabilities, licenses, and outdated versions.",
+      "level": "Beginner"
+    },
+    {
+      "question": "What is a 'secrets management' tool, and why is it crucial in DevSecOps?",
+      "options": ["A tool for managing confidential meeting notes.", "A tool for securely storing, accessing, and managing sensitive data like API keys, passwords, and tokens.", "A tool for managing user access to version control systems.", "A tool for encrypting entire application binaries."],
+      "answer": ["A tool for securely storing, accessing, and managing sensitive data like API keys, passwords, and tokens."],
+      "is_multi_select": false,
+      "hint": "It prevents secrets from being hard-coded in source code.",
+      "rationale": "Secrets management tools (e.g., HashiCorp Vault, AWS Secrets Manager) prevent the exposure of credentials by providing a secure, centralized platform to manage and audit access to secrets, which is a fundamental security practice.",
+      "level": "Beginner"
+    },
+    {
+      "question": "What is the main security risk associated with using a container image with the 'latest' tag?",
+      "options": ["It is always more expensive.", "It guarantees the most secure version.", "The image's contents are unpredictable and could introduce breaking changes or new vulnerabilities.", "It is not supported by container registries."],
+      "answer": ["The image's contents are unpredictable and could introduce breaking changes or new vulnerabilities."],
+      "is_multi_select": false,
+      "hint": "The 'latest' tag is a moving target.",
+      "rationale": "The 'latest' tag is mutable and can change over time. Using a specific digest or version tag ensures predictability and allows for vulnerability scanning of a known, immutable artifact.",
+      "level": "Beginner"
+    },
+    {
+      "question": "Which practice involves automatically checking code for security issues during the commit or pull request phase?",
+      "options": ["Incident Response", "Pre-Commit Hooks / Git Hooks", "Disaster Recovery", "Threat Modeling"],
+      "answer": ["Pre-Commit Hooks / Git Hooks"],
+      "is_multi_select": false,
+      "hint": "This acts as a gate before code is even shared with the team.",
+      "rationale": "Pre-commit hooks can run lightweight security scans (e.g., secret detection, basic SAST) on the developer's machine before code is committed, catching issues at the earliest possible stage.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the purpose of a container image vulnerability scanner?",
+      "options": ["To compile source code into a binary.", "To analyze a running container's network traffic.", "To identify known vulnerabilities within the operating system and application packages inside a container image.", "To optimize the size of a container image."],
+      "answer": ["To identify known vulnerabilities within the operating system and application packages inside a container image."],
+      "is_multi_select": false,
+      "hint": "It scans the layers of an image against databases like CVE.",
+      "rationale": "These scanners (e.g., Trivy, Grype, Docker Scout) are essential for shifting security left, allowing teams to find and fix vulnerabilities in images before they are deployed to production.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "In a CI/CD pipeline, what is the security benefit of using immutable infrastructure?",
+      "options": ["It allows for easy manual patching of live servers.", "It reduces the cost of cloud resources.", "It eliminates configuration drift and ensures that systems are provisioned from a known, secure state every time.", "It makes servers boot faster."],
+      "answer": ["It eliminates configuration drift and ensures that systems are provisioned from a known, secure state every time."],
+      "is_multi_select": false,
+      "hint": "Think 'replace, don't modify'.",
+      "rationale": "Immutable infrastructure means that instead of patching a running server, you build a new image from a base image that has been updated and scanned for vulnerabilities. This practice guarantees consistency and eliminates the risks associated with manual, ad-hoc changes.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the key difference between SAST and DAST? (Select all that apply)",
+      "options": ["SAST requires access to source code; DAST does not.", "SAST tests a running application; DAST tests static code.", "SAST is a white-box testing method; DAST is a black-box testing method.", "DAST can find runtime vulnerabilities; SAST cannot."],
+      "answer": ["SAST requires access to source code; DAST does not.", "SAST is a white-box testing method; DAST is a black-box testing method.", "DAST can find runtime vulnerabilities; SAST cannot."],
+      "is_multi_select": true,
+      "hint": "One looks inside the application, the other attacks it from the outside.",
+      "rationale": "SAST (white-box) analyzes the source code internally for flaws. DAST (black-box) tests the application from the outside while it's running, finding issues like runtime misconfigurations and authentication problems that SAST might miss.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is Threat Modeling?",
+      "options": ["Creating models of cybercriminals.", "A structured process to identify and prioritize potential security threats and vulnerabilities to a system.", "A method for testing network bandwidth.", "The process of writing security requirements."],
+      "answer": ["A structured process to identify and prioritize potential security threats and vulnerabilities to a system."],
+      "is_multi_select": false,
+      "hint": "It's about thinking like an attacker before building the system.",
+      "rationale": "Threat modeling is a proactive approach where teams analyze the design of a system to identify potential security threats (e.g., using STRIDE) and implement mitigations early in the design phase.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "Which AWS service provides managed vulnerability scanning for container images?",
+      "options": ["AWS Inspector", "AWS GuardDuty", "AWS Config", "AWS Shield"],
+      "answer": ["AWS Inspector"],
+      "is_multi_select": false,
+      "hint": "It 'inspects' your workloads for vulnerabilities.",
+      "rationale": "Amazon Inspector automatically scans container images in Amazon ECR for software vulnerabilities and network reachability issues.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is a 'false positive' in the context of security scanning?",
+      "options": ["A correctly identified vulnerability.", "A test that passes successfully.", "A result that incorrectly indicates a vulnerability is present.", "A highly critical vulnerability."],
+      "answer": ["A result that incorrectly indicates a vulnerability is present."],
+      "is_multi_select": false,
+      "hint": "It's an alert that cries wolf when there's no real threat.",
+      "rationale": "High rates of false positives can lead to 'alert fatigue,' where developers start to ignore security tooling outputs. Tuning tools to reduce false positives is a key DevSecOps task.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the security purpose of using a non-root user inside a container?",
+      "options": ["To improve application performance.", "To comply with software licensing.", "To minimize the attack surface and impact of a container breakout.", "To make the container image smaller."],
+      "answer": ["To minimize the attack surface and impact of a container breakout."],
+      "is_multi_select": false,
+      "hint": "It follows the principle of least privilege.",
+      "rationale": "If an attacker manages to break out of the application, they will have the same privileges as the user running the container process. Running as a non-root user limits the potential damage.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the primary security risk that dependency confusion attacks exploit?",
+      "options": ["Weak passwords in databases.", "Misconfigured cloud storage buckets.", "The tendency of package managers to pull dependencies from public repositories before private ones.", "Unencrypted network traffic."],
+      "answer": ["The tendency of package managers to pull dependencies from public repositories before private ones."],
+      "is_multi_select": false,
+      "hint": "It confuses the source of a package.",
+      "rationale": "This attack involves uploading a malicious package with a higher version number to a public repository (e.g., npm, PyPI) using the same name as a private/internal package. The build system might then pull the malicious public package instead of the intended private one.",
+      "level": "Advanced"
+    },
+    {
+      "question": "How can a GitOps workflow enhance security?",
+      "options": ["By eliminating the need for a CI/CD pipeline.", "By making Git the single source of truth for infrastructure state, enabling audit trails, reproducibility, and automated, signed deployments.", "By allowing developers to deploy directly from their machines.", "By storing all secrets directly in the Git repository."],
+      "answer": ["By making Git the single source of truth for infrastructure state, enabling audit trails, reproducibility, and automated, signed deployments."],
+      "is_multi_select": false,
+      "hint": "It provides a declarative and auditable history of all changes.",
+      "rationale": "GitOps uses Git as the central declarative source. All changes are version-controlled, peer-reviewed via pull requests, and can be signed. Automated agents ensure the live environment matches the Git state, reducing manual intervention and its associated risks.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the role of a 'policy agent' like OPA (Open Policy Agent) or Kyverno in Kubernetes security?",
+      "options": ["To compile application code.", "To provide a domain-specific language to define and enforce security and compliance policies across the cluster.", "To manage node scalability.", "To replace the Kubernetes API server."],
+      "answer": ["To provide a domain-specific language to define and enforce security and compliance policies across the cluster."],
+      "is_multi_select": false,
+      "hint": "It acts as a gatekeeper for cluster configurations.",
+      "rationale": "Policy agents allow administrators to create 'guardrails' that automatically enforce policies (e.g., 'all containers must have a read-only root filesystem', 'all images must come from a trusted registry') at deployment time, preventing misconfigurations.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is a 'software supply chain attack'?",
+      "options": ["An attack on a physical shipping company that delivers software.", "An attack that compromises tools, infrastructure, or dependencies used in the software development process to infect the final delivered product.", "An attack that only targets open-source software.", "An attack on the software licensing server."],
+      "answer": ["An attack that compromises tools, infrastructure, or dependencies used in the software development process to infect the final delivered product."],
+      "is_multi_select": false,
+      "hint": "Think SolarWinds or the CodeCov breach.",
+      "rationale": "These attacks are highly effective because they can compromise a single component (like a build tool or a library) that is then distributed to many downstream users, amplifying the impact.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the security benefit of using signed commits and signed container images?",
+      "options": ["It makes the code run faster.", "It provides cryptographic proof of the origin and integrity of the code or artifact, ensuring it hasn't been tampered with.", "It automatically fixes vulnerabilities.", "It is required for all open-source projects."],
+      "answer": ["It provides cryptographic proof of the origin and integrity of the code or artifact, ensuring it hasn't been tampered with."],
+      "is_multi_select": false,
+      "hint": "It's about verifying authenticity and integrity.",
+      "rationale": "Signing artifacts creates a trust chain. You can verify that the code came from a trusted developer (commit signing) and that the container image you're running is exactly the one that was built by your CI system and hasn't been altered (image signing).",
+      "level": "Advanced"
+    },
+    {
+      "question": "In the context of secrets management, what are 'ephemeral secrets'?",
+      "options": ["Secrets that are not important.", "Secrets that are stored in a text file.", "Short-lived credentials that are automatically generated and revoked, reducing the risk of exposure from long-lived secrets.", "Secrets used for encryption at rest."],
+      "answer": ["Short-lived credentials that are automatically generated and revoked, reducing the risk of exposure from long-lived secrets."],
+      "is_multi_select": false,
+      "hint": "They exist only for a short, specific task.",
+      "rationale": "Tools like HashiCorp Vault can generate dynamic, short-lived secrets (e.g., database credentials) for applications. If these secrets are leaked, they are only valid for a very limited time, drastically reducing the blast radius.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What does IAST (Interactive Application Security Testing) stand for and how does it work?",
+      "options": ["It scans source code before compilation.", "It tests the application from the outside like a hacker.", "It uses instrumentation agents inside the application runtime to analyze code for vulnerabilities while the application is being used by automated tests.", "It only analyzes network traffic."],
+      "answer": ["It uses instrumentation agents inside the application runtime to analyze code for vulnerabilities while the application is being used by automated tests."],
+      "is_multi_select": false,
+      "hint": "It's a 'grey-box' testing method that combines elements of SAST and DAST.",
+      "rationale": "IAST tools have access to all the code, runtime control flow, data flow, and configuration information. This deep visibility allows for highly accurate vulnerability detection with fewer false positives than SAST or DAST alone.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the purpose of a 'canary token'?",
+      "options": ["A token used to authenticate to a canary deployment.", "A unique piece of data planted in your environment that, when accessed, triggers an alert, indicating a breach.", "A cryptocurrency used for bug bounties.", "A type of API key."],
+      "answer": ["A unique piece of data planted in your environment that, when accessed, triggers an alert, indicating a breach."],
+      "is_multi_select": false,
+      "hint": "It's a digital tripwire.",
+      "rationale": "Canary tokens are a form of deception technology. For example, placing a fake API key in your code or a fake AWS credential file. If an attacker finds and uses it, you receive an immediate alert that your systems have been compromised.",
+      "level": "Advanced"
+    },
+    {
+      "question": "How does a 'Chaos Engineering' practice like Netflix's Chaos Monkey contribute to security?",
+      "options": ["It deliberately hacks into systems to find vulnerabilities.", "It tests the system's resilience and security incident response by intentionally injecting failures in a controlled manner.", "It is used to generate chaotic encryption keys.", "It deletes all logs to test monitoring alerts."],
+      "answer": ["It tests the system's resilience and security incident response by intentionally injecting failures in a controlled manner."],
+      "is_multi_select": false,
+      "hint": "It builds confidence in the system's ability to withstand unexpected events.",
+      "rationale": "By proactively testing how systems behave under failure (e.g., terminating instances, injecting latency), teams can uncover hidden security flaws and ensure that fail-safes and monitoring alerting work correctly before a real incident occurs.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the primary security consideration when using a public cloud provider's Managed Service Identity (e.g., AWS IAM Roles, Azure Managed Identities)?",
+      "options": ["They are too expensive to use.", "They are not secure and should be avoided.", "Applying the principle of least privilege to the permissions assigned to the identity, even though the credentials are managed by the cloud provider.", "They require hardcoded credentials."],
+      "answer": ["Applying the principle of least privilege to the permissions assigned to the identity, even though the credentials are managed by the cloud provider."],
+      "is_multi_select": false,
+      "hint": "The cloud provider manages the credential rotation, but you manage the permissions.",
+      "rationale": "While these services eliminate the need to manage and rotate secret keys, the major security responsibility shifts to ensuring the associated role or identity has only the minimum permissions absolutely required for the application to function, preventing lateral movement in a breach.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the key difference between RASP and WAF?",
+      "options": ["There is no difference; they are the same thing.", "RASP (Runtime Application Self-Protection) runs on the server and protects the application from within, while WAF (Web Application Firewall) is a network-based filter that inspects HTTP traffic.", "WAF is for APIs, RASP is for web apps.", "RASP is open-source, WAF is commercial."],
+      "answer": ["RASP (Runtime Application Self-Protection) runs on the server and protects the application from within, while WAF (Web Application Firewall) is a network-based filter that inspects HTTP traffic."],
+      "is_multi_select": false,
+      "hint": "One is inside the application context, the other is outside at the network perimeter.",
+      "rationale": "WAF is a generalized, perimeter-based defense that can be bypassed by sophisticated attacks. RASP is embedded in the application runtime, giving it deep context to detect and block specific attacks with higher accuracy, but it consumes application resources.",
+      "level": "Advanced"
+    },
+    {
+      "question": "When implementing security into a CI/CD pipeline, what does the term 'gating' refer to?",
+      "options": ["Building a physical fence around the server rack.", "The practice of automatically preventing a build from progressing to the next stage if it fails a security policy check.", "The process of granting everyone access to production.", "A meeting to discuss security features."],
+      "answer": ["The practice of automatically preventing a build from progressing to the next stage if it fails a security policy check."],
+      "is_multi_select": false,
+      "hint": "It acts as a security gate in the pipeline.",
+      "rationale": "Gating is a critical control. For example, if a critical vulnerability is found in a container image during a scan, the pipeline can be configured to fail and prevent that image from being deployed to any environment, forcing remediation.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the primary security advantage of using a service mesh like Istio or Linkerd?",
+      "options": ["It compiles code faster.", "It provides built-in mutual TLS (mTLS) encryption for service-to-service communication, fine-grained access control, and observability without changing application code.", "It replaces the need for a firewall.", "It automatically writes secure code."],
+      "answer": ["It provides built-in mutual TLS (mTLS) encryption for service-to-service communication, fine-grained access control, and observability without changing application code."],
+      "is_multi_select": false,
+      "hint": "It secures the communication between services in a microservices architecture.",
+      "rationale": "A service mesh abstracts security and networking logic into a dedicated infrastructure layer (the sidecar proxy). This allows teams to enforce encryption (mTLS), authentication, and authorization policies consistently across all services, implementing a zero-trust network model.",
+      "level": "Advanced"
+    },
+    {
+      "question": "What is the concept of 'Zero Trust' security in the context of a modern cloud-native application?",
+      "options": ["Trusting all traffic inside the corporate network.", "A security model that assumes no implicit trust is granted to assets or user accesses based solely on their physical or network location.", "A policy of having zero security tools.", "A law in the European Union."],
+      "answer": ["A security model that assumes no implicit trust is granted to assets or user accesses based solely on their physical or network location."],
+      "is_multi_select": false,
+      "hint": "'Never trust, always verify' is its motto.",
+      "rationale": "In a Zero Trust model, every request—even from within the internal network—must be authenticated, authorized, and encrypted. Access is granted on a per-session, least-privilege basis. This is crucial for defending against lateral movement by attackers who have breached the perimeter.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "What is the main purpose of a 'security champion' program within development teams?",
+      "options": ["To replace the need for a dedicated security team.", "To act as a first line of defense and security advocate within their team, promoting best practices and facilitating communication with the central security team.", "To win security competitions.", "To manage all security tools for the team."],
+      "answer": ["To act as a first line of defense and security advocate within their team, promoting best practices and facilitating communication with the central security team."],
+      "is_multi_select": false,
+      "hint": "It's about embedding security knowledge directly into engineering teams.",
+      "rationale": "A security champion is a developer with a keen interest in security who receives extra training. They help bridge the gap between security and development, triage findings, and promote a security-minded culture within their team, scaling the efforts of the central security team.",
+      "level": "Intermediate"
+    },
+    {
+      "question": "Which of the following is a key characteristic of a 'secure software development lifecycle' (SDLC)?",
+      "options": ["Security testing is performed only by a dedicated team after development is complete.", "Security requirements are defined, and security activities are integrated into each phase of the SDLC (requirements, design, development, testing, deployment).", "Developers are not involved in security decisions.", "All code is written in a memory-safe language, eliminating the need for other security measures."],
+      "answer": ["Security requirements are defined, and security activities are integrated into each phase of the SDLC (requirements, design, development, testing, deployment)."],
+      "is_multi_select": false,
+      "hint": "Security is not a phase, but integrated throughout.",
+      "rationale": "A secure SDLC (S-SDLC) bakes security into the process from the very beginning. This includes threat modeling during design, SAST/SCA during development, DAST/pen testing pre-deployment, and monitoring post-deployment.",
+      "level": "Beginner"
+    }
+  ]
+}

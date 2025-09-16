@@ -1,0 +1,21 @@
+{
+  "roles": ["DevOps Engg", "SRE", "Developer", "FL","user"],
+  "questions": [
+    {
+      "question": "What is a key benefit of a microservices architecture?",
+      "options": ["Monolithic structure.", "Loose coupling.", "Single point of failure.", "Shared database."],
+      "answer": ["Loose coupling."],
+      "is_multi_select": false,
+      "hint": "Microservices are designed to be independent of each other.",
+      "rationale": "Microservices are loosely coupled, meaning each service can be developed, deployed, and scaled independently without affecting other services."
+    },
+    {
+      "question": "Which of the following are challenges associated with a microservices architecture?",
+      "options": ["Increased operational complexity.", "Managing distributed data.", "Debugging across multiple services.", "Faster development cycles."],
+      "answer": ["Increased operational complexity.", "Managing distributed data.", "Debugging across multiple services."],
+      "is_multi_select": true,
+      "hint": "While microservices offer many benefits, they also introduce challenges in communication and management.",
+      "rationale": "Challenges include increased operational complexity, managing data consistency across multiple services, and debugging requests that span multiple services."
+    }
+  ]
+}
