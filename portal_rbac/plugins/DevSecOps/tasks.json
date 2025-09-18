@@ -1,0 +1,19 @@
+{
+  "plugin": "DevSecOps",
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "code": "DSO-TASK-0001",
+      "title": "Sign & Verify Container Image",
+      "description": "Produce a signed image using Cosign and attach SBOM. Submit the Cosign verification output and registry link.",
+      "level": "Advanced",
+      "points": 150,
+      "require_attachment": true,
+      "tags": [
+        "Cosign",
+        "SBOM",
+        "Registry"
+      ]
+    }
+  ]
+}

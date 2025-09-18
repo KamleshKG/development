@@ -1,0 +1,18 @@
+{
+  "plugin": "Kubernetes",
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "code": "K8S-TASK-0001",
+      "title": "Enforce NetworkPolicy",
+      "description": "Create a NetworkPolicy to restrict ingress to only namespace 'ci'. Provide YAML and curl test evidence from blocked ns.",
+      "level": "Advanced",
+      "points": 120,
+      "require_attachment": true,
+      "tags": [
+        "NetworkPolicy",
+        "Security"
+      ]
+    }
+  ]
+}

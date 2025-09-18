@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Question Pack",
+  "type": "object",
+  "properties": {
+    "plugin": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question_id": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "Beginner",
+              "Intermediate",
+              "Advanced"
+            ]
+          },
+          "question": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 5
+          },
+          "correct_options": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "is_multi_select": {
+            "type": "boolean"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "question_id",
+          "level",
+          "question",
+          "options",
+          "correct_options",
+          "is_multi_select"
+        ]
+      }
+    }
+  },
+  "required": [
+    "plugin",
+    "version",
+    "questions"
+  ]
+}

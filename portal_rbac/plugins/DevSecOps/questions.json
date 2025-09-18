@@ -1,0 +1,29 @@
+{
+  "plugin": "DevSecOps",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "question_id": "DSO-ADV-0001",
+      "level": "Advanced",
+      "question": "Which are best practices for locking down Jenkins on Kubernetes?",
+      "options": [
+        "Use ephemeral agents with non-root user",
+        "Run master and agents as privileged",
+        "Restrict plugin install to admins",
+        "Disable RBAC on the cluster"
+      ],
+      "correct_options": [
+        1,
+        3
+      ],
+      "is_multi_select": true,
+      "hint": "Think least privilege + supply chain.",
+      "rationale": "Non-root agents and restricted plugin installs reduce attack surface.",
+      "tags": [
+        "Jenkins",
+        "Kubernetes",
+        "Security"
+      ]
+    }
+  ]
+}

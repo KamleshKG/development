@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Pack",
+  "type": "object",
+  "properties": {
+    "plugin": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "Beginner",
+              "Intermediate",
+              "Advanced"
+            ]
+          },
+          "points": {
+            "type": "integer"
+          },
+          "require_attachment": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "title",
+          "description",
+          "level",
+          "points",
+          "require_attachment"
+        ]
+      }
+    }
+  },
+  "required": [
+    "plugin",
+    "version",
+    "tasks"
+  ]
+}

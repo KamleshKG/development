@@ -1,0 +1,30 @@
+{
+  "plugin": "Kubernetes",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "question_id": "K8S-ADV-0001",
+      "level": "Advanced",
+      "question": "Which Kubernetes security controls should be enforced cluster-wide?",
+      "options": [
+        "Pod Security Standards (baseline/restricted)",
+        "NetworkPolicies per namespace",
+        "Allow hostPID/hostNetwork globally",
+        "Admission policies for image signatures"
+      ],
+      "correct_options": [
+        1,
+        2,
+        4
+      ],
+      "is_multi_select": true,
+      "hint": "Think default deny + admission.",
+      "rationale": "PSS, network policies, and signed-image admission reduce risk.",
+      "tags": [
+        "Security",
+        "Policy",
+        "Kubernetes"
+      ]
+    }
+  ]
+}

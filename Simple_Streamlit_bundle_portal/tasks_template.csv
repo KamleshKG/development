@@ -1,0 +1,3 @@
+plugin,code,title,description,level,points,require_attachment,tags
+DevSecOps,DSO-TASK-0001,Harden a Jenkins Agent,Configure a Jenkins Kubernetes agent with non-root user and restricted capabilities. Provide podTemplate YAML and a screenshot of a successful build using it.,Advanced,100,1,Jenkins;Kubernetes;Security
+Kubernetes,K8S-TASK-0001,NetworkPolicy Restriction,Create a NetworkPolicy that allows only namespace 'ci' to reach your app service. Provide the policy YAML and a curl test screenshot from a blocked namespace.,Advanced,120,1,Kubernetes;NetworkPolicy;Security
