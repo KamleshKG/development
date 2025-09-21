@@ -1,6 +1,0 @@
-streamlit
-pytesseract
-pillow
-pypdf
-tqdm
-python-magic

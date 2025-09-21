@@ -1,8 +1,0 @@
-setup.py
-class_viz_dashboard.egg-info/PKG-INFO
-class_viz_dashboard.egg-info/SOURCES.txt
-class_viz_dashboard.egg-info/dependency_links.txt
-class_viz_dashboard.egg-info/top_level.txt
-utils/__init__.py
-utils/core_parser.py
-utils/visualization.py

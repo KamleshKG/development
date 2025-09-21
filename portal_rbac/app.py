@@ -2,8 +2,6 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
-import hashlib
-import os
 from pathlib import Path
 from datetime import datetime
 
@@ -12,12 +10,7 @@ from utils.loader import scan_plugins, load_questions_json, load_tasks_json
 from utils.store import run_schema, init_admin, upsert_plugin, upsert_question, upsert_task, get_conn, hash_pw
 
 DB_PATH = "portal.db"
-
-# --- Robust PLUGINS_DIR (works without secrets.toml) ---
-try:
-    PLUGINS_DIR = st.secrets["PLUGINS_DIR"]
-except Exception:
-    PLUGINS_DIR = os.environ.get("PLUGINS_DIR", "plugins")
+PLUGINS_DIR = st.secrets.get("PLUGINS_DIR", "plugins")
 
 st.set_page_config(page_title="RBAC Gamified Portal (Plugins)", page_icon="🧩", layout="wide")
 st.title("🧩 RBAC Gamified Portal — Plugins (Questions + Tasks)")
@@ -27,7 +20,7 @@ if "user" not in st.session_state:
 
 with st.sidebar:
     st.subheader("Setup")
-    if st.button("Initialize DB", key="btn_init_db"):
+    if st.button("Initialize DB"):
         run_schema("schema.sql")
         init_admin()
         st.success("DB ready. Admin default: admin / admin123")
@@ -35,12 +28,12 @@ with st.sidebar:
     st.subheader("Auth")
     if st.session_state.user:
         st.write(f"Logged in as **{st.session_state.user['username']}** ({st.session_state.user['role']})")
-        if st.button("Logout", key="btn_logout"):
+        if st.button("Logout"):
             st.session_state.user = None
     else:
-        u = st.text_input("Username", key="login_username")
-        p = st.text_input("Password", type="password", key="login_password")
-        if st.button("Login", key="btn_login"):
+        u = st.text_input("Username")
+        p = st.text_input("Password", type="password")
+        if st.button("Login"):
             with get_conn() as conn:
                 c = conn.cursor()
                 c.execute("SELECT id, password_hash, role FROM users WHERE username=?", (u,))
@@ -52,29 +45,29 @@ with st.sidebar:
                 st.error("Invalid credentials")
         st.divider()
         st.caption("New here? Register below.")
-        ru = st.text_input("New username", key="reg_username")
-        rp = st.text_input("New password", type="password", key="reg_password")
-        role = st.selectbox("Role", ["player","manager","admin","auditor"], index=0, key="reg_role")
-        if st.button("Register", key="btn_register"):
+        ru = st.text_input("New username")
+        rp = st.text_input("New password", type="password")
+        role = st.selectbox("Role", ["player","manager","admin","auditor"], index=0)
+        if st.button("Register"):
             with get_conn() as conn:
+                import sqlite3 as _sql
                 try:
                     conn.execute("INSERT INTO users (username, password_hash, role) VALUES (?,?,?)",
                                  (ru, hash_pw(rp), role))
                     conn.commit()
                     st.success("Registered. Login now.")
-                except sqlite3.IntegrityError:
+                except _sql.IntegrityError:
                     st.error("Username already exists.")
 
 tabs = st.tabs(["Play", "Tasks", "Review", "Admin", "Reports"])
 
-# --- Tab: Admin (Sync plugins) ---
 with tabs[3]:
     st.header("Admin — Plugin Packs")
     if not st.session_state.user or not can_sync_plugins(st.session_state.user["role"]):
         st.info("Admin only.")
     else:
         st.write(f"Plugins folder: `{PLUGINS_DIR}`")
-        if st.button("Scan & Sync Plugins", key="btn_sync_plugins"):
+        if st.button("Scan & Sync Plugins"):
             count_q = count_t = 0
             for item in scan_plugins(PLUGINS_DIR):
                 code = item["code"]
@@ -95,7 +88,6 @@ with tabs[3]:
             dfp = pd.read_sql_query("SELECT id, code, title, is_enabled FROM plugins", conn)
             st.dataframe(dfp)
 
-# --- Tab: Play (Questions) ---
 with tabs[0]:
     st.header("Play — Questions")
     if not st.session_state.user or not can_play(st.session_state.user["role"]):
@@ -103,10 +95,10 @@ with tabs[0]:
     else:
         with get_conn() as conn:
             dplugs = pd.read_sql_query("SELECT code FROM plugins WHERE is_enabled=1 ORDER BY code", conn)
-        plug = st.selectbox("Plugin", dplugs["code"].tolist() if not dplugs.empty else [], key="play_plugin")
-        level = st.selectbox("Level", ["Beginner","Intermediate","Advanced"], index=2, key="play_level")
-        count = st.slider("Questions", 5, 20, 10, key="play_count")
-        if st.button("Load Questions", key="btn_load_questions"):
+        plug = st.selectbox("Plugin", dplugs["code"].tolist() if not dplugs.empty else [])
+        level = st.selectbox("Level", ["Beginner","Intermediate","Advanced"], index=2)
+        count = st.slider("Questions", 5, 20, 10)
+        if st.button("Load Questions"):
             with get_conn() as conn:
                 query = (
                     "SELECT q.id, q.question_id, q.level, q.question, "
@@ -138,10 +130,10 @@ with tabs[0]:
                         selected = [f"option_{idx}"]
                 cols = st.columns(3)
                 with cols[0]:
-                    if st.button(f"Hint {r['id']}", key=f"hint_{r['id']}"):
+                    if st.button(f"Hint {r['id']}"):
                         st.info(r["hint"] or "No hint")
                 with cols[1]:
-                    if st.button(f"Submit {r['id']}", key=f"submit_{r['id']}"):
+                    if st.button(f"Submit {r['id']}"):
                         correct = set([x.strip() for x in r["correct_options"].split(",") if x.strip()])
                         chosen = set(selected)
                         good = (correct == chosen)
@@ -162,7 +154,6 @@ with tabs[0]:
                             st.error(f"Not quite ({delta})")
                         st.caption(f"Rationale: {r['rationale']}")
 
-# --- Tab: Tasks (Submit Evidence) ---
 with tabs[1]:
     st.header("Tasks — Submit Evidence")
     if not st.session_state.user or not can_play(st.session_state.user["role"]):
@@ -170,8 +161,8 @@ with tabs[1]:
     else:
         with get_conn() as conn:
             dplugs = pd.read_sql_query("SELECT code FROM plugins WHERE is_enabled=1 ORDER BY code", conn)
-        plug = st.selectbox("Plugin", dplugs["code"].tolist() if not dplugs.empty else [], key="tasks_plugin")
-        level = st.selectbox("Level", ["Beginner","Intermediate","Advanced"], index=2, key="tasks_level")
+        plug = st.selectbox("Plugin", dplugs["code"].tolist() if not dplugs.empty else [])
+        level = st.selectbox("Level", ["Beginner","Intermediate","Advanced"], index=2)
         with get_conn() as conn:
             query = (
                 "SELECT t.id, p.code as plugin, t.code, t.title, t.description, t.level, t.points, t.require_attachment "
@@ -187,10 +178,10 @@ with tabs[1]:
             for _, t in dft.iterrows():
                 st.markdown(f"**[{t['code']}] {t['title']}** — _{t['plugin']} · {t['level']} · {t['points']} pts_")
                 st.write(t["description"])
-                with st.expander("Submit evidence", expanded=False):
+                with st.expander("Submit evidence"):
                     text = st.text_area("What you did (steps/commands/links):", key=f"txt_{t['id']}")
                     up = st.file_uploader("Attach proof", key=f"file_{t['id']}")
-                    if st.button(f"Submit {t['code']}", key=f"btn_submit_task_{t['id']}"):
+                    if st.button(f"Submit {t['code']}"):
                         saved_path = None
                         if up is not None:
                             fname = f"{st.session_state.user['id']}-{t['id']}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}-{up.name}"
@@ -205,7 +196,6 @@ with tabs[1]:
                             conn.commit()
                         st.success("Submitted for review!")
 
-# --- Tab: Review (Managers) ---
 with tabs[2]:
     st.header("Review — Approve/Reject/Request Changes")
     if not st.session_state.user or not can_review(st.session_state.user["role"]):
@@ -231,18 +221,17 @@ with tabs[2]:
                 if r["evidence_text"]:
                     st.write(f"**Evidence:** {r['evidence_text']}")
                 if r["evidence_file"] and Path(r["evidence_file"]).exists():
-                    st.download_button("Download attachment", data=Path(r["evidence_file"]).read_bytes(), file_name=Path(r["evidence_file"]).name, key=f"dl_{r['id']}")
+                    st.download_button("Download attachment", data=Path(r["evidence_file"]).read_bytes(), file_name=Path(r["evidence_file"]).name)
                 comment = st.text_input(f"Reviewer comment #{r['id']}", key=f"c_{r['id']}")
                 award = st.number_input(f"Award points #{r['id']}", min_value=0, max_value=1000, value=100, step=10, key=f"p_{r['id']}")
                 c1, c2, c3 = st.columns(3)
                 with c1:
-                    if st.button(f"Approve #{r['id']}", key=f"approve_{r['id']}"):
+                    if st.button(f"Approve #{r['id']}"):
                         with get_conn() as conn:
                             conn.execute(
                                 "UPDATE task_submissions SET status='approved', reviewer_id=?, reviewer_comment=?, score_awarded=?, reviewed_at=CURRENT_TIMESTAMP WHERE id=?",
                                 (st.session_state.user["id"], comment, int(award), int(r["id"]))
                             )
-                            # award
                             conn.execute(
                                 "INSERT INTO task_points (user_id, total_task_points) VALUES ((SELECT user_id FROM task_submissions WHERE id=?), ?) ON CONFLICT(user_id) DO UPDATE SET total_task_points = total_task_points + excluded.total_task_points, last_updated=CURRENT_TIMESTAMP",
                                 (int(r["id"]), int(award))
@@ -254,7 +243,7 @@ with tabs[2]:
                             conn.commit()
                         st.success("Approved!")
                 with c2:
-                    if st.button(f"Reject #{r['id']}", key=f"reject_{r['id']}"):
+                    if st.button(f"Reject #{r['id']}"):
                         with get_conn() as conn:
                             conn.execute(
                                 "UPDATE task_submissions SET status='rejected', reviewer_id=?, reviewer_comment=?, reviewed_at=CURRENT_TIMESTAMP WHERE id=?",
@@ -263,7 +252,7 @@ with tabs[2]:
                             conn.commit()
                         st.warning("Rejected.")
                 with c3:
-                    if st.button(f"Needs Changes #{r['id']}", key=f"needs_changes_{r['id']}"):
+                    if st.button(f"Needs Changes #{r['id']}"):
                         with get_conn() as conn:
                             conn.execute(
                                 "UPDATE task_submissions SET status='needs_changes', reviewer_id=?, reviewer_comment=?, reviewed_at=CURRENT_TIMESTAMP WHERE id=?",
@@ -272,7 +261,6 @@ with tabs[2]:
                             conn.commit()
                         st.info("Requested changes.")
 
-# --- Tab: Reports (Auditor) ---
 with tabs[4]:
     st.header("Reports — Audit & Exports")
     if not st.session_state.user or not can_view_reports(st.session_state.user["role"]):
@@ -288,5 +276,5 @@ with tabs[4]:
         st.dataframe(df_attempts)
         st.subheader("Recent Task Submissions")
         st.dataframe(df_subs)
-        st.download_button("Export Attempts CSV", data=df_attempts.to_csv(index=False), file_name="attempts.csv", key="dl_attempts")
-        st.download_button("Export Task Submissions CSV", data=df_subs.to_csv(index=False), file_name="task_submissions.csv", key="dl_subs")
+        st.download_button("Export Attempts CSV", data=df_attempts.to_csv(index=False), file_name="attempts.csv")
+        st.download_button("Export Task Submissions CSV", data=df_subs.to_csv(index=False), file_name="task_submissions.csv")
